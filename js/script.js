@@ -12,6 +12,7 @@ function init() {
   if (section_classment != null) {
     ranks.forEach(rank => section_classment.append(ligne_rang(rank)))
   }
+  leaflet()
 }
 
 function ligne_rang(rank_data) {
