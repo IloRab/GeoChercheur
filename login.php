@@ -6,10 +6,11 @@ $password = isset($_POST["password"])? $_POST["password"] : "";
 if ($pseudo  != "" && $password != "") {
     require("variables.php");
     foreach ($clients as $client) {
-        if (
-            $client['pseudo'] === $pseudo && $client['password'] === $password) {
+        if ( $client['pseudo'] === $pseudo && $client['password'] === $password ) {
+            $token = "";
             $loggedUser = [
-                'pseudo' => $pseudo['pseudo'],
+                'pseudo' => $pseudo,
+                'token' => $token,
             ];
 
             /**
@@ -17,7 +18,7 @@ if ($pseudo  != "" && $password != "") {
              */
             setcookie(
                 'LOGGED_USER',
-                $loggedUser['pseudo'],
+                $loggedUser,
                 [
                     'expires' => time() + 365*24*3600,
                     'secure' => true,
@@ -25,7 +26,7 @@ if ($pseudo  != "" && $password != "") {
                 ]
             );
 
-            $_SESSION['LOGGED_USER'] = $loggedUser['pseudo'];
+            $_SESSION['LOGGED_USER'] = $loggedUser;
             require("accueil_connecte.php");
         } else {
             $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
