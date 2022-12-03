@@ -26,9 +26,10 @@ if ($pseudo  != "" && $password != "") {
             );
 
             $_SESSION['LOGGED_USER'] = $loggedUser['pseudo'];
+            require("accueil_connecte.php");
         } else {
             $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
-            require("accueil_connexion.tpl");
+            require("accueil_connexion.php");
         }
     }
 }
