@@ -40,11 +40,13 @@ CREATE TABLE Parcours(
    CONSTRAINT FK_Parcours_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
 );
 
-CREATE TABLE historique(
+CREATE TABLE Historique(
+   idHistorique INT AUTO_INCREMENT;
    idClient INT,
    idParcours INT,
    score INT NOT NULL,
-   CONSTRAINT PK_historique PRIMARY KEY(idClient, idParcours),
+   dateH DATE NOT NULL,
+   CONSTRAINT PK_historique PRIMARY KEY(idHistorique, idClient, idParcours),
    CONSTRAINT FK_historique_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE,
    CONSTRAINT FK_historique_Parcours FOREIGN KEY(idParcours) REFERENCES Parcours(idParcours) ON DELETE CASCADE
 );
@@ -52,7 +54,6 @@ CREATE TABLE historique(
 CREATE TABLE ScoreTotal(
    idClient INT,
    scoreTotal INT NOT NULL,
-   meilleurScore INT NOT NULL,
    nbParties INT NOT NULL,
    CONSTRAINT PK_ScoreTotal PRIMARY KEY(idClient),
    CONSTRAINT FK_ScoreTotal_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
@@ -72,18 +73,19 @@ DROP PROCEDURE IF EXISTS addParcours;
 DROP PROCEDURE IF EXISTS addQuestion;
 DROP PROCEDURE IF EXISTS addQuestionsAParcours;
 DROP FUNCTION IF EXISTS getMeilleurScore;
+DROP FUNCTION IF EXISTS getScoreMoyen;
 DROP PROCEDURE IF EXISTS sauvegarde;
 
 DELIMITER $
-CREATE PROCEDURE addClient(nvPseudo VARCHAR(50), nvMdp VARCHAR(50))
+CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50))
 BEGIN
-	INSERT INTO Client (idClient, pseudo, mdp) VALUES (NULL, nvPseudo, nvMdp);
+	INSERT INTO Client (idClient, pseudo, mdp) VALUES (NULL, Pseudo_, Mdp);
    INSERT INTO ScoreTotal(idClient, score, meilleurScore, nbParties) VALUES ((SELECT LAST_INSERT_ID() FROM Client),0,0,0);
 END $
 
 
 DELIMITER $
-CREATE PROCEDURE addQuestion(coordonnees_ VARCHAR(50), lienImage_ VARCHAR(50), idClient_ INT)
+CREATE PROCEDURE addQuestion(coordonnees_ GEOMETRY, lienImage_ VARCHAR(50), idClient_ INT)
 BEGIN
 	INSERT INTO Question (idQuestion, coordonnees, lienImage, idClient) VALUES (NULL, coordonnees_, lienImage_, idClient_);
 END $
@@ -104,12 +106,22 @@ BEGIN
 END $
 
 DELIMITER $
-CREATE FUNCTION  getMeilleurScore(idClient_ INT) 
+CREATE FUNCTION  getMeilleurScore(idClient_ INT, idParcours_ INT) 
 RETURNS INT 
 BEGIN
    DECLARE  score INT;
    SET score = (SELECT MAX(score)  FROM historique 
-   WHERE idClient = idClient_);
+   WHERE idClient = idClient_ and idParcours = idParcours_);
+   RETURN score;
+END $
+
+DELIMITER $
+CREATE FUNCTION  getScoreMoyen(idClient_ INT, idParcours_ INT) 
+RETURNS INT 
+BEGIN
+   DECLARE  score INT;
+   SET score = (SELECT AVG(score) FROM historique 
+   WHERE idClient = idClient_ and idParcours = idParcours_);
    RETURN score;
 END $
 
@@ -117,9 +129,9 @@ END $
 DELIMITER $
 CREATE PROCEDURE sauvegarde(idClient_ INT, idParcours INT, score_ INT)
 BEGIN
-   INSERT INTO historique(idClient, idParcours, score) VALUES (idClient_,idParcours_,score_);
+   INSERT INTO historique(idHistorique, idClient, idParcours, score, dateH) VALUES (NULL, idClient_,idParcours_,score_, SYSDATE);
    UPDATE ScoreTotal 
-   SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1, meilleurScore = getMeilleurScore(idClient_)
+   SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1
    WHERE idClient = idClient_;
 END $
 
