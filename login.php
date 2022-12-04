@@ -11,6 +11,7 @@ if ($pseudo  != "" && $password != "") {
             $loggedUser = [
                 'pseudo' => $pseudo,
                 'token' => $token,
+                'idClient' => $client['idClient'],
             ];
 
             /**
@@ -18,7 +19,7 @@ if ($pseudo  != "" && $password != "") {
              */
             setcookie(
                 'LOGGED_USER',
-                $loggedUser,
+                $loggedUser['pseudo'],
                 [
                     'expires' => time() + 365*24*3600,
                     'secure' => true,
@@ -36,13 +37,13 @@ if ($pseudo  != "" && $password != "") {
 }
 else {
     $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
-    require("accueil_connexion.tpl");
+    require("accueil_connexion.php");
 }
 
 // Si le cookie ou la session sont présentes
-if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER'])) {
+if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER']['pseudo'])) {
     $loggedUser = [
-        'pseudo' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER'],
+        'pseudo' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER']['pseudo'],
     ];
 }
 
