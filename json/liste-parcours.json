@@ -1,0 +1,16 @@
+{
+  "parcours" : [
+    {
+      "id-parcour": 1,
+      "nom-parcour": "urbain",
+      "thumbnail": "lien-thumbnail",
+      "description-parcours": "un truc cool ici"
+    },
+    {
+      "id-parcour": 2,
+      "nom-parcour": "campagne",
+      "thumbnail": "lien-thumbnail",
+      "description-parcours": "un truc cool ici"
+    }
+  ]
+}
