@@ -16,8 +16,8 @@ DROP TABLE IF EXISTS Compose;
 
 CREATE TABLE Client(
    idClient INT AUTO_INCREMENT,
-   typeImage VARCHAR(50) NOT NULL,
-   imageQ BLOB NOT NULL,
+   typeIcon VARCHAR(50) NOT NULL,
+   icon BLOB NOT NULL,
    pseudo VARCHAR(50) NOT NULL,
    mdp VARCHAR(50) NOT NULL,
    CONSTRAINT PK_Client PRIMARY KEY(idClient),
