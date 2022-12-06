@@ -196,6 +196,14 @@ body {
   text-align: center;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background: #C4DFAA;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.description-parcours {
+  flex: 1 1 auto;
+  max-height: 100%;
 }
 
 .parcours hr {
@@ -215,6 +223,7 @@ body {
 .play {
   border: none;
   border-radius: 15px;
+  width: min-content;
 
   color: white;
   background: green;
@@ -222,6 +231,9 @@ body {
 
   font-weight: bolder;
   margin-bottom: 1em;
+
+  text-transform: uppercase;
+  align-self: center;
 }
 
 .score-nb {

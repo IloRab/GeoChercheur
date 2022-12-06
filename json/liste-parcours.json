@@ -1,16 +1,28 @@
 {
   "parcours" : [
     {
-      "id-parcour": 1,
-      "nom-parcour": "urbain",
-      "thumbnail": "lien-thumbnail",
-      "description-parcours": "un truc cool ici"
+      "id_parcour": 1,
+      "nom_parcour": "brown",
+      "thumbnail": "assets/img/doggos/brown.jpg",
+      "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
     },
     {
-      "id-parcour": 2,
-      "nom-parcour": "campagne",
-      "thumbnail": "lien-thumbnail",
-      "description-parcours": "un truc cool ici"
+      "id_parcour": 2,
+      "nom_parcour": "headphones",
+      "thumbnail": "assets/img/doggos/headphones.jpg",
+      "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    },
+    {
+      "id_parcour": 3,
+      "nom_parcour": "pug",
+      "thumbnail": "assets/img/doggos/pug.jpg",
+      "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    },
+    {
+      "id_parcour": 4,
+      "nom_parcour": "mad",
+      "thumbnail": "assets/img/doggos/mad.jpg",
+      "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
     }
   ]
 }
