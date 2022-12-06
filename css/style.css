@@ -1,0 +1,237 @@
+body {
+  color: white;
+  background: rgb(196,223,170);
+  background: linear-gradient(274deg, rgba(196,223,170,1) 0%, rgba(115,169,173,1) 100%);
+  font-family: sans-serif;
+}
+
+/* https://colorhunt.co/palette/f5f0bbc4dfaa90c8ac73a9ad */
+
+/* Navbar */
+
+.main-navbar {
+  display: grid;
+  align-items: center;
+  gap: 2em;
+  grid-template-columns: 200px auto 100px 100px;
+  position: relative;
+  padding: 0 1em;
+  margin-bottom: 2em;
+}
+
+.logo {
+  height: 5em;
+  aspect-ratio: 1 / 1;
+  object-fit: scale-down;
+  margin: 0;
+}
+
+.navbar-list {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.navbar-list a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.navbar-list li:hover {
+  font-weight: 1000;
+  color: yellow;
+}
+
+.navbar-checkbox {
+  display: none;
+}
+
+.search-bar {
+  height: 2rem;
+  width: 100%;
+  background: white;
+  border: none;
+  border-radius: 15px;
+}
+
+.account {
+  display: grid;
+  align-items: center;
+  height: 50%;
+  background: #73a9ad;
+  border-radius: 15px;
+
+  grid-template-columns: 50% 50%;
+  color: white;
+  text-decoration: none;
+}
+
+.account img {
+  align-self: normal;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.account-score {
+  margin: 0 0.5em;
+  padding: 0;
+  display: none;
+  font-weight: bold;
+}
+
+@media (min-width: 901px) {
+  .search-bar:focus-visible {
+    position: fixed;
+    width: 20rem;
+    right: 1em;
+    z-index: 999;
+  }
+  .account-score {
+    display: inline-block;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .main-navbar {
+    gap: 1em;
+  }
+
+  .main-navbar {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+  }
+
+  .navbar-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .account {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .logo {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0 auto;
+  }
+
+  .navbar-checkbox {
+    display: block;
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .search-bar {
+    grid-column: 1 / 4;
+    grid-row:3;
+  }
+
+  .navbar-list {
+    height: 100%;
+    transform-origin: top;
+    transition: height 500ms ease-in-out, margin 1s ease-in-out, padding 1s ease-in-out;
+
+    grid-column: 1 / 4;
+    grid-row:2;
+  }
+
+  .navbar-checkbox:checked ~ .navbar-list {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    transition: height 500ms ease-in-out, margin 1s ease-in-out, padding 1s ease-in-out;
+    overflow: hidden;
+  }
+
+}
+
+/* Recap */
+
+.title {
+  color: yellow;
+  text-transform: uppercase;
+}
+
+.title span {
+  color: white;
+  font-size: 3rem;
+  display: block;
+}
+
+
+.recap {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Cards */
+
+.section-parcours {
+  --taille-min-cartes: 16rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--taille-min-cartes), 1fr));
+
+  margin: 2em;
+}
+
+.title-parcours {
+  text-transform: capitalize;
+}
+
+.parcours {
+  color: black;
+  border-radius: 15px;
+  overflow: hidden;
+
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: #C4DFAA;
+}
+
+.parcours hr {
+  margin: 0 1em;
+}
+
+.parcours img {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.parcours:has(.play:focus){
+  scale: 1.05 1.05;
+}
+
+.play {
+  border: none;
+  border-radius: 15px;
+
+  color: white;
+  background: green;
+  padding: 0.5em 1.5em;
+
+  font-weight: bolder;
+  margin-bottom: 1em;
+}
+
+.score-nb {
+  font-weight: bold;
+}
+
+:is(.account, .parcours, .play):hover {
+  scale: 1.05 1.05;
+}
+
+:is(.account, .play):hover {
+  cursor: pointer;
+}
