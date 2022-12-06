@@ -25,7 +25,8 @@ CREATE TABLE Client(
 CREATE TABLE Question(
    idQuestion INT AUTO_INCREMENT,
    coordonnees GEOMETRY NOT NULL,
-   lienImage VARCHAR(500) NOT NULL,
+   typeImage VARCHAR(50) NOT NULL,
+   imageQ BLOB NOT NULL,
    idClient INT,
    CONSTRAINT PK_Question PRIMARY KEY(idQuestion),
    CONSTRAINT FK_Question_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
@@ -41,7 +42,7 @@ CREATE TABLE Parcours(
 );
 
 CREATE TABLE Historique(
-   idHistorique INT AUTO_INCREMENT;
+   idHistorique INT AUTO_INCREMENT,
    idClient INT,
    idParcours INT,
    score INT NOT NULL,
@@ -53,10 +54,12 @@ CREATE TABLE Historique(
 
 CREATE TABLE ScoreTotal(
    idClient INT,
+   idParcours INT,
    scoreTotal INT NOT NULL,
    nbParties INT NOT NULL,
    CONSTRAINT PK_ScoreTotal PRIMARY KEY(idClient),
-   CONSTRAINT FK_ScoreTotal_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
+   CONSTRAINT FK_ScoreTotal_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE,
+   CONSTRAINT FK_ScoreTotal_Parcours FOREIGN KEY(idParcours) REFERENCES Parcours(idParcours) ON DELETE CASCADE
 );
 
 CREATE TABLE Compose(
@@ -127,11 +130,11 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE sauvegarde(idClient_ INT, idParcours INT, score_ INT)
+CREATE PROCEDURE sauvegarde(idClient_ INT, idParcours_ INT, score_ INT)
 BEGIN
    INSERT INTO historique(idHistorique, idClient, idParcours, score, dateH) VALUES (NULL, idClient_,idParcours_,score_, SYSDATE);
    UPDATE ScoreTotal 
    SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1
-   WHERE idClient = idClient_;
+   WHERE idClient = idClient_ and idParcours = idParcours_ ;
 END $
 
