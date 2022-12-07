@@ -2,6 +2,7 @@ window.addEventListener("load", init);
 
 function init() {
   const themes = JSON.parse('{ "parcours" : [ { "id_parcour": 1, "nom_parcour": "brown", "thumbnail": "assets/img/doggos/brown.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." }, { "id_parcour": 2, "nom_parcour": "headphones", "thumbnail": "assets/img/doggos/headphones.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." }, { "id_parcour": 3, "nom_parcour": "pug", "thumbnail": "assets/img/doggos/pug.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." }, { "id_parcour": 4, "nom_parcour": "mad", "thumbnail": "assets/img/doggos/mad.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." } ] } ')
+  // document.body.insertBefore(navbar, document.getElementById("main-content"));
   const section_parcours = document.getElementById("section-parcours");
   themes.parcours.forEach(theme => {
     console.log(theme)
@@ -9,6 +10,7 @@ function init() {
   });
 }
 
+// TODO: tout refaire en object assign
 function carte_parcour(parcour_data) {
   const card = document.createElement("article");
   const img = document.createElement("img");
@@ -33,11 +35,11 @@ function carte_parcour(parcour_data) {
   card.append(title);
   card.append(desc);
   card.append(
-    Object.assign(document.createElement("button"),
+    Object.assign(document.createElement("a"),
       {
         className: "play",
-        type: "button",
-        textContent: "play"
+        textContent: "play",
+        href: "#"
       })
   );
   card.append(document.createElement("hr"))
@@ -50,3 +52,5 @@ function carte_parcour(parcour_data) {
   // document.getElementById("section-parcours").append(card);
   return card;
 }
+
+
