@@ -155,50 +155,51 @@
     overflow: hidden;
   }
 
+  .navbar-checkbox-label{
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-checkbox-label span,
+  .navbar-checkbox-label span::before,
+  .navbar-checkbox-label span::after {
+      display: block;
+      background: white;
+      height: 3px;
+      width: 2em;
+      border-radius: 2px;
+      content: "";
+      position: absolute;
+
+  }
+
+
+  .navbar-checkbox-label span {
+    left: 65%;
+  }
+  .navbar-checkbox ~ .navbar-checkbox-label span::before,
+  .navbar-checkbox ~ .navbar-checkbox-label span::after {
+    right: 50%;
+    transition: right 500ms ease-in-out;
+  }
+
+  .navbar-checkbox:checked ~ .navbar-checkbox-label span::before,
+  .navbar-checkbox:checked ~ .navbar-checkbox-label span::after {
+    right: 0;
+    transition: right 500ms ease-in-out;
+  }
+
+
+  .navbar-checkbox-label span::before {
+      top: 7px;
+  }
+
+  .navbar-checkbox-label span::after {
+      bottom: 7px;
+  }
 
 }
 
-.navbar-checkbox-label{
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
 
-.navbar-checkbox-label span,
-.navbar-checkbox-label span::before,
-.navbar-checkbox-label span::after {
-    display: block;
-    background: white;
-    height: 3px;
-    width: 2em;
-    border-radius: 2px;
-    content: "";
-    position: absolute;
-
-}
-
-
-.navbar-checkbox-label span {
-  left: 65%;
-}
-.navbar-checkbox ~ .navbar-checkbox-label span::before,
-.navbar-checkbox ~ .navbar-checkbox-label span::after {
-  right: 50%;
-  transition: right 500ms ease-in-out;
-}
-
-.navbar-checkbox:checked ~ .navbar-checkbox-label span::before,
-.navbar-checkbox:checked ~ .navbar-checkbox-label span::after {
-  right: 0;
-  transition: right 500ms ease-in-out;
-}
-
-
-.navbar-checkbox-label span::before {
-    top: 7px;
-}
-
-.navbar-checkbox-label span::after {
-    bottom: 7px;
-}

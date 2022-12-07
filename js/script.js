@@ -5,9 +5,10 @@ function init() {
   // document.body.insertBefore(navbar, document.getElementById("main-content"));
   const section_parcours = document.getElementById("section-parcours");
   themes.parcours.forEach(theme => {
-    console.log(theme)
-      section_parcours.append(carte_parcour(theme))
+    section_parcours.append(carte_parcour(theme));
   });
+
+
 }
 
 // TODO: tout refaire en object assign
