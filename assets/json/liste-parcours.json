@@ -1,22 +1,22 @@
 [
   {
-    "nom_parcours": "brown",
+    "nom_parcour": "brown",
     "thumbnail": "assets/img/doggos/brown.jpg",
-    "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    "description_parcour": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   },
   {
     "nom_parcour": "headphones",
     "thumbnail": "assets/img/doggos/headphones.jpg",
-    "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    "description_parcour": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   },
   {
-    "nom_parcours": "pug",
+    "nom_parcour": "pug",
     "thumbnail": "assets/img/doggos/pug.jpg",
-    "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    "description_parcour": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   },
   {
-    "nom_parcours": "mad",
+    "nom_parcour": "mad",
     "thumbnail": "assets/img/doggos/mad.jpg",
-    "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    "description_parcour": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   }
 ]

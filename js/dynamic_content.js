@@ -33,7 +33,6 @@ function display_dyn_content(current_page) {
    .then(json => {
       const dyn_section = document.getElementById("dynamic-section");
       json.forEach(item => dyn_section.append(dyn_content.generate(item)))
-
    })
    .catch(function () {
       console.log("Some error jus happened with the fect request for " + dyn_content.url)
@@ -77,10 +76,11 @@ function carte_parcour(parcour_data) {
       textContent: parcour_data.nom_parcour
     }
   );
+
   append_new(card, "p",
     {
       className: "description-parcours centered-padded-text",
-      textContent: parcour_data.description_parcours
+      textContent: parcour_data.description_parcour
     }
   )
   append_new(card, "a",
