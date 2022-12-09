@@ -8,8 +8,8 @@ $obj = json_decode($data);
 require("connectServer.php");
 // Récupération des variables à l'aide du client MySQL
 $usersStatement = $mysqlClient->prepare('CALL addParcours(?,?,?,?)');
-$usersStatement->bindParm(1,$obj->nom_parcours);
-$usersStatement->bindParm(2,$_SESSION['logged_user]['idClient']);
-$usersStatement->bindParm(3,$obj->description_parcours);
-$usersStatement->bindParm(4,$obj->thumbnail);
+$usersStatement->bindParam(1,$obj->nom_parcours);
+$usersStatement->bindParam(2,$_SESSION['LOGGED_USER']['idClient']);
+$usersStatement->bindParam(3,$obj->description_parcours);
+$usersStatement->bindParam(4,$obj->thumbnail);
 $usersStatement->execute();
