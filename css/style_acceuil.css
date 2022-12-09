@@ -1,15 +1,7 @@
-body {
-  color: white;
-  background: rgb(196,223,170);
-  background: linear-gradient(274deg, rgba(196,223,170,1) 0%, rgba(115,169,173,1) 100%);
-  font-family: sans-serif;
+.bienvenue-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
-/* https://colorhunt.co/palette/f5f0bbc4dfaa90c8ac73a9ad */
-
-/* Navbar */
-
-
 
 .logo {
   height: 5em;
@@ -24,20 +16,18 @@ body {
 /*Message de bienvenue*/
 
 .texte-presentation{
-  text-align: center;
+  text-align: justify;
   width: 100%;
 }
 
 .connexion{
   display: flex;
-  margin-top: 30px;
-  justify-content: flex-end;
   color: white;
-  margin-left: 80%;
   text-decoration:none;
-  border-style: solid;
-  border-color: whitesmoke;
-  float: right;
+
+  justify-content: right;
+  align-items: center;
+  padding-right: 2em;
 }
 
 .connexion:hover{
@@ -49,17 +39,11 @@ body {
   margin: 20px 0 20px 0;
   margin-inline: 30%;
   padding-bottom: 20px;
-  /*border-style: solid;
-  border-color: black;*/
 }
 
-.main-title{
-  color: yellow;
+.title{
   font-size: 2.5em;
   text-align: center;
-  width: 100%;
-  /*border-style: solid;
-  border-color: black;*/
 }
 
 /*Responsivité de la page*/
@@ -87,9 +71,6 @@ body {
 
 /*Le CSS du carroussel*/
 
-img {
-  max-width: 100%;
-}
 .slider-container {
   max-width: 800px;
   position: relative;
@@ -97,7 +78,7 @@ img {
   height: 350px;
   overflow: hidden;
 }
-.menu {
+.slide-menu {
   position: absolute;
   left: 0;
   z-index: 11;
@@ -105,20 +86,21 @@ img {
   bottom: 0;
   text-align: center;
 }
-.menu label {
+.slide-menu-item {
   cursor: pointer;
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  aspect-ratio: 1 / 1;
   background: #ccc;
   border-radius: 50px;
   margin: 0 0.2em 1em;
 }
-.menu label:hover,.menu label:focus {
+
+.slide-menu-item:hover, .slide-menu-item:focus {
   background: #1c87c9;
 }
 
-.slide-img {
+.slide-item {
   width: 100%;
   height: 300px;
   position: absolute;
@@ -126,8 +108,11 @@ img {
   left: 100%;
   z-index: 10;
   transition: left 0s 0.75s;
+  object-fit: cover;
 }
-[id^="slide"]:checked + .slide-img {
+
+
+.slide-input:checked + .slide-item {
   left: 0;
   z-index: 100;
   transition: left 0.65s ease-out;

@@ -71,7 +71,7 @@ function carte_parcour(parcour_data) {
   );
   append_new(card, "p",
     {
-      className: "description-parcours",
+      className: "description-parcours centered-padded-text",
       textContent: parcour_data.description_parcours
     }
   )

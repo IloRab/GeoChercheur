@@ -12,6 +12,7 @@ body {
 
 /* https://colorhunt.co/palette/f5f0bbc4dfaa90c8ac73a9ad */
 
+
 /* Recap */
 
 .title {
@@ -32,6 +33,11 @@ body {
   text-align: center;
 }
 
+.centered-padded-text {
+  padding: 1em;
+  text-align: justify;
+}
+
 /* Cards */
 
 .section-parcours {
@@ -49,7 +55,7 @@ body {
 
 .parcours {
   color: black;
-  border-radius: 5px;
+  border-radius: 15px;
   overflow: hidden;
 
   text-align: center;
@@ -121,7 +127,7 @@ body {
   grid-template-columns: 70px 1fr 100px;
   color: black;
   background: #C4DFAA;
-  border-radius: 5px;
+  border-radius: 15px;
 
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -174,7 +180,6 @@ body {
 
   top: 0;
   left: 0;
-  z-index: -1;
 }
 
 .minimap {
@@ -191,9 +196,6 @@ body {
   transition: 
     width 500ms ease-in-out,
     height 1s ease-in-out;
-
-  border: 5px black double;
-  border-radius: 5px;
 }
 
 .minimap:hover {
@@ -204,11 +206,10 @@ body {
     width 500ms ease-in-out;
 }
 
-.minimap:focus { /** Separated for firefox compatibility **/ 
+.minimap:focus {
   height: 90vh;
   width: 45vw;
-}
-.minimap:has(*:focus) {
-  height: 90vh;
-  width: 45vw;
+  /* transition:  */
+  /*   width 500ms ease-in-out, */
+  /*   height 1s ease-in-out; */
 }
