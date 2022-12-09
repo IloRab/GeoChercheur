@@ -16,8 +16,7 @@ DROP TABLE IF EXISTS Compose;
 
 CREATE TABLE Client(
    idClient INT AUTO_INCREMENT,
-   typeIcon VARCHAR(50) NOT NULL,
-   icon BLOB NOT NULL,
+   icon VARCHAR(100) NOT NULL,
    pseudo VARCHAR(50) NOT NULL,
    mdp VARCHAR(50) NOT NULL,
    CONSTRAINT PK_Client PRIMARY KEY(idClient),
@@ -27,8 +26,7 @@ CREATE TABLE Client(
 CREATE TABLE Question(
    idQuestion INT AUTO_INCREMENT,
    coordonnees GEOMETRY NOT NULL,
-   typeImage VARCHAR(50) NOT NULL,
-   imageQ BLOB NOT NULL,
+   imageQ VARCHAR(100) NOT NULL,
    idClient INT,
    CONSTRAINT PK_Question PRIMARY KEY(idQuestion),
    CONSTRAINT FK_Question_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
@@ -38,6 +36,8 @@ CREATE TABLE Parcours(
    idParcours INT AUTO_INCREMENT,
    nomParcours VARCHAR(50) NOT NULL,
    idClient INT NOT NULL,
+   descriptionParcours TEXT NOT NULL,
+   imageP VARCHAR(100) NOT NULL,
    CONSTRAINT PK_Parcours PRIMARY KEY(idParcours),
    CONSTRAINT U_nomparcours UNIQUE(nomParcours),
    CONSTRAINT FK_Parcours_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
@@ -59,7 +59,7 @@ CREATE TABLE ScoreTotal(
    idParcours INT,
    scoreTotal INT NOT NULL,
    nbParties INT NOT NULL,
-   CONSTRAINT PK_ScoreTotal PRIMARY KEY(idClient),
+   CONSTRAINT PK_ScoreTotal PRIMARY KEY(idClient, idParcours),
    CONSTRAINT FK_ScoreTotal_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE,
    CONSTRAINT FK_ScoreTotal_Parcours FOREIGN KEY(idParcours) REFERENCES Parcours(idParcours) ON DELETE CASCADE
 );
@@ -85,7 +85,6 @@ DELIMITER $
 CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50))
 BEGIN
 	INSERT INTO Client (idClient, pseudo, mdp) VALUES (NULL, Pseudo_, Mdp);
-   INSERT INTO ScoreTotal(idClient, score, meilleurScore, nbParties) VALUES ((SELECT LAST_INSERT_ID() FROM Client),0,0,0);
 END $
 
 
@@ -97,9 +96,12 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE addParcours(nom VARCHAR(50), idCreateur INT)
+CREATE PROCEDURE addParcours(nom VARCHAR(50), idCreateur INT, descriptionParcours TEXT, imageP VARCHAR(100))
 BEGIN
+   DECLARE idParcours_ INT;
 	INSERT INTO Parcours (idParcours, nomParcours, idClient) VALUES (NULL, nom, idCreateur);
+   SET idParcours_ = (SELECT LAST_INSERT_ID() FROM Parcours);
+   INSERT INTO ScoreTotal(idClient, idParcours, scoreTotal, nbParties ) VALUES (SELECT idClient, idParcours_,0,0 FROM Client);
 END $
 
 
