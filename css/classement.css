@@ -1,0 +1,60 @@
+.section-leaderboard {
+  margin: 1em 0;
+  display: grid;
+  justify-content: center;
+  gap: 1em;
+  counter-reset: section;
+}
+
+.classement-item {
+  counter-increment: section;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 70px 1fr 100px;
+
+  width: min(50rem, 80vw);
+  padding: 0.5rem;
+
+  color: black;
+  background: var(--color1);
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+
+.classement-item::before {
+  content: counter(section);
+  grid-column: 1;
+  justify-self: center;
+
+  color: var(--color3);
+  background: black;
+  border-radius: 15px;
+  padding: 0.2rem 0.60rem;
+
+  font-weight: 1000;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.classement-item-username {
+  grid-column: 2;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.classement-item-username::before {
+  content: "@";
+}
+
+.classement-item-score {
+  margin: 0;
+  padding: 0;
+  grid-column: 3;
+
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.classement-item-score::after {
+  content: "pts";
+}

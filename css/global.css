@@ -1,0 +1,45 @@
+:root {
+  --color1: #C4DFAA;
+  --color2: rgba(115,169,173,1);
+  --color3: yellow;
+  --color4: white;
+  --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --gradient: linear-gradient(274deg, var(--color1) 0%,  var(--color2)  100%);
+}
+
+@font-face {
+  font-family: raleway;
+  src: url('../assets/font/raleway/Raleway-Medium.ttf');
+}
+
+html {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  color: white;
+  background: var(--color2);
+  background: var(--gradient);
+  font-family: raleway;
+}
+
+hr {
+  --color: black;
+  background: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 5px;
+}
+
+h1 {
+  --title-size: 1.5rem;
+  color: var(--color3);
+  text-transform: uppercase;
+  font-size: var(--title-size);
+}
+
+h1 span {
+  color: white;
+  font-size: calc(var(--title-size) * 2);
+  display: block;
+}

@@ -1,0 +1,69 @@
+.section-parcours {
+  display: grid;
+  gap: 1rem;
+  --taille-min-cartes: 16rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--taille-min-cartes), 1fr));
+
+  margin: 2em;
+}
+
+.title-parcours {
+  text-transform: capitalize;
+}
+
+.parcours {
+  color: black;
+  border-radius: 5px;
+  overflow: hidden;
+
+  text-align: center;
+  box-shadow: var(--shadow);
+  background: var(--color1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-bottom: 1em;
+}
+
+.parcours hr {
+  margin: 0 1em;
+}
+
+.parcours img {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.parcours:has(.play:focus){
+  scale: 1.05 1.05;
+}
+
+.play {
+  border: none;
+  border-radius: 15px;
+  width: min-content;
+
+  color: white;
+  background: green;
+  padding: 0.5em 1.5em;
+
+  font-weight: bolder;
+
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.score-nb {
+  font-weight: bold;
+}
+
+:is(.parcours, .play):hover {
+  scale: 1.05 1.05;
+}
+
+.play {
+  color: white;
+  text-decoration: none;
+}

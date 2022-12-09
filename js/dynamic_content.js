@@ -5,31 +5,39 @@ function dynamic_init() {
   let doc_url = document.baseURI.split("/");
   let doc_filename = doc_url[doc_url.length - 1]
 
-  const dyn_section = document.getElementById("dynamic-section");
-  let dyn_content = query_dyn_content("", doc_filename)
-  dyn_content.data.forEach(item => dyn_section.append(dyn_content.generate(item)))
-
+  display_dyn_content(doc_filename)
 }
 
-function query_dyn_content(api_url, request) {
-  // This is temporary, waiting util php is finished
-  // TODO: turn this into a fetch request
-  
-  const parcours = JSON.parse('[ { "id_parcour": 1, "nom_parcour": "brown", "thumbnail": "assets/img/doggos/brown.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." }, { "id_parcour": 2, "nom_parcour": "headphones", "thumbnail": "assets/img/doggos/headphones.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." }, { "id_parcour": 3, "nom_parcour": "pug", "thumbnail": "assets/img/doggos/pug.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." }, { "id_parcour": 4, "nom_parcour": "mad", "thumbnail": "assets/img/doggos/mad.jpg", "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." } ] ')
-  const ranks = JSON.parse('[ {"pseudo": "bob", "score":900}, {"pseudo": "john", "score":899}, {"pseudo": "rick", "score":800} ]');
+function display_dyn_content(current_page) {
 
   let contents = {
     "jouer.html": {
-      data: parcours,
+      url: "assets/json/liste-parcours.json",
       generate: carte_parcour
     },
     "leaderboard.html": {
-      data: ranks,
+      url: "assets/json/classement-par-parcours.json",
       generate: ligne_rang
     }
   }
 
-  return contents[request]
+  let dyn_content = contents[current_page]
+
+   fetch(dyn_content.url)
+   .then(response => {
+       if (!response.ok) {
+           throw new Error("HTTP error " + response.status);
+       }
+       return response.json();
+   })
+   .then(json => {
+      const dyn_section = document.getElementById("dynamic-section");
+      json.forEach(item => dyn_section.append(dyn_content.generate(item)))
+
+   })
+   .catch(function () {
+      console.log("Some error jus happened with the fect request for " + dyn_content.url)
+   })
 }
 
 function ligne_rang(rank_data) {
