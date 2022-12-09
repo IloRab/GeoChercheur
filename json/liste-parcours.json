@@ -5,18 +5,17 @@
     "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   },
   {
-    "id_parcours": 2,
     "nom_parcour": "headphones",
     "thumbnail": "assets/img/doggos/headphones.jpg",
     "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   },
   {
-    "nom_parcour": "pug",
+    "nom_parcours": "pug",
     "thumbnail": "assets/img/doggos/pug.jpg",
     "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   },
   {
-    "nom_parcour": "mad",
+    "nom_parcours": "mad",
     "thumbnail": "assets/img/doggos/mad.jpg",
     "description_parcours": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
   }
