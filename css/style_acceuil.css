@@ -1,0 +1,53 @@
+body {
+  color: white;
+  background: rgb(196,223,170);
+  background: linear-gradient(274deg, rgba(196,223,170,1) 0%, rgba(115,169,173,1) 100%);
+  font-family: sans-serif;
+}
+
+/* https://colorhunt.co/palette/f5f0bbc4dfaa90c8ac73a9ad */
+
+/* Navbar */
+
+
+
+.logo {
+  height: 5em;
+  aspect-ratio: 1 / 1;
+  object-fit: scale-down;
+  margin: 0;
+}
+
+
+/*acceuil element css*/
+
+.texte-presentation{
+  text-align: center;
+}
+
+.connexion{
+  display: grid;
+  float: right;
+  justify-content: flex-end;
+  color: white;
+  text-decoration:none;
+}
+
+.connexion:hover{
+  text-decoration:underline;
+}
+
+.bienvenue{
+  justify-content: center;
+  margin-top: 20px;
+  margin-inline: 30%;
+  border-style: solid;
+  border-color: black;
+}
+
+.main-title{
+  font-size: 2.5em;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+}
