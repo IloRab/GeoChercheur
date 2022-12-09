@@ -15,22 +15,29 @@ body {
   height: 5em;
   aspect-ratio: 1 / 1;
   object-fit: scale-down;
-  margin: 0;
+  
+  /*border-style: solid;
+  border-color: black;*/
 }
 
 
-/*acceuil element css*/
+/*Message de bienvenue*/
 
 .texte-presentation{
   text-align: center;
+  width: 100%;
 }
 
 .connexion{
-  display: grid;
-  float: right;
+  display: flex;
+  margin-top: 30px;
   justify-content: flex-end;
   color: white;
+  margin-left: 80%;
   text-decoration:none;
+  border-style: solid;
+  border-color: whitesmoke;
+  float: right;
 }
 
 .connexion:hover{
@@ -39,15 +46,89 @@ body {
 
 .bienvenue{
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0 20px 0;
   margin-inline: 30%;
-  border-style: solid;
-  border-color: black;
+  padding-bottom: 20px;
+  /*border-style: solid;
+  border-color: black;*/
 }
 
 .main-title{
+  color: yellow;
   font-size: 2.5em;
   text-align: center;
-  border-style: solid;
-  border-color: black;
+  width: 100%;
+  /*border-style: solid;
+  border-color: black;*/
+}
+
+/*Responsivité de la page*/
+
+
+@media screen and (max-width: 767px){
+  .logo {
+    height: 5em;
+    aspect-ratio: 1 / 1;
+    object-fit: scale-down;
+    
+    /*border-style: solid;
+    border-color: black;*/
+  }
+  .bienvenue{
+    justify-content: center;
+    margin: 50px 0 20px 0;
+    margin:auto;
+    /*border-style: solid;
+    border-color: black;*/
+  }
+  
+  
+}
+
+/*Le CSS du carroussel*/
+
+img {
+  max-width: 100%;
+}
+.slider-container {
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+  height: 350px;
+  overflow: hidden;
+}
+.menu {
+  position: absolute;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+}
+.menu label {
+  cursor: pointer;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50px;
+  margin: 0 0.2em 1em;
+}
+.menu label:hover,.menu label:focus {
+  background: #1c87c9;
+}
+
+.slide-img {
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 10;
+  transition: left 0s 0.75s;
+}
+[id^="slide"]:checked + .slide-img {
+  left: 0;
+  z-index: 100;
+  transition: left 0.65s ease-out;
 }
