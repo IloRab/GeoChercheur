@@ -96,8 +96,8 @@ function search(search_str) {
     let articles = Array.from(document.querySelectorAll(".searchable-section article"));
 
     for (const article of articles) {
-      let title = article.getElementsByTagName("h3")[0].textContent;
-      let in_query = title.includes(search_str) || search_str === "";
+      let title = article.getElementsByTagName("h3")[0].textContent.toLowerCase();
+      let in_query = title.includes(search_str.toLowerCase()) || search_str === "";
 
       article.style.visibility = (in_query)? "visible" : "hidden";
       article.style.maxHeight =  (in_query)? "1000px" : 0;

@@ -1,5 +1,6 @@
+window.addEventListener("load", leaflet_init)
 
-function leaflet() {
+function leaflet_init() {
   let coord_iut = [48.84197804895268,2.267719848410252];
 
   let map = L.map('minimap').setView(coord_iut, 13);
