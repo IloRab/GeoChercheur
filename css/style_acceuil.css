@@ -77,6 +77,7 @@
   margin: auto;
   height: 350px;
   overflow: hidden;
+  border-radius: 30px;
 }
 .slide-menu {
   position: absolute;
@@ -117,3 +118,93 @@
   z-index: 100;
   transition: left 0.65s ease-out;
 }
+
+/*CSS pour le formulaire*/
+
+form{
+  justify-content: center;
+  align-content: center;
+  margin: 20px 0 20px 0;
+  margin-inline: 30%;
+  padding-bottom: 20px;
+  border-radius: 30px;
+}
+
+#SignIn{
+  display: none;
+}
+
+fieldset{
+  margin-top: 4em;
+  margin-bottom: 4em;
+  border: none;
+}
+
+form fieldset input{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: white;
+  width: 20em;
+  height: 2em;
+}
+
+form button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+  height: 40px;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: white;
+  font-style: oblique;
+  font-size: 20px;
+  background-color: white;
+}
+
+form a{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+  text-decoration:none;
+}
+
+form a:hover{
+  text-decoration:underline;
+}
+
+form div fieldset legend{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-style: oblique;
+}
+
+@media screen and (max-width: 767px){
+  form{
+    margin: auto;
+  }
+}
+
+form button:focus {  
+  height: 40vh;
+  width: 25vw;
+}
+
+form button:hover {
+  width: 8rem;
+  height: 3rem;
+  transition: 
+    height 500ms ease-in-out,
+    width 500ms ease-in-out;
+}
+

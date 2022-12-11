@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<title>Page Title</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
-<style>
-</style>
-<script src=""></script>
+<title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/global.css" rel="stylesheet">
+    <link href="css/style_acceuil.css" rel="stylesheet">
+    <script src="js/script.js"></script>
 <body>
+    <header class="bienvenue-header">
+        <img class="logo" src="assets/img/tmp-logo.png" alt="logo" >
+    </header>
 
-<img src="img_la.jpg" alt="LA" style="width:100%">
 
-<div class="">
- <h1>This is a Heading</h1>
- <p>This is a paragraph.</p>
- <p>This is another paragraph.</p>
-</div>
+<form >
+    <div id="SignUp" name="SignUp">
+    <fieldset>
+        <legend> Nom </legend>
+        <input type="text" id="nom" name="pseudo" >
+    </fieldset>
+
+    <fieldset>
+        <legend> Mot de passe </legend>
+        <input type="password" id="password" name="password">
+    </fieldset>
+    <fieldset>
+        <button id="send" > S'inscrire</button>
+    </fieldset>
+    <a href="">Vous avez déjà un compte ?</a>
+    </div>
+
+
+    <div id="SignIn" name="SignIn">
+        <fieldset>
+            <legend> Nom </legend>
+            <input type="text" id="nom" name="pseudo" >
+        </fieldset>
+    
+        <fieldset>
+            <legend> Mot de passe </legend>
+            <input type="password" id="password" name="password">
+        </fieldset>
+        <fieldset>
+            <button id="send" > Se connecter
+            </button>
+        </fieldset>
+        <a href="">Vous n'avez pas de compte?</a>
+    </div>
+</form>
 
 </body>
 </html>
