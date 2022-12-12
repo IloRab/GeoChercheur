@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/global.css" rel="stylesheet">
     <link href="css/style_acceuil.css" rel="stylesheet">
-    <script src="js/script.js"></script>
+    <script src="js/acceuil.js"></script>
 <body>
     <header class="bienvenue-header">
         <img class="logo" src="assets/img/tmp-logo.png" alt="logo" >
@@ -27,7 +27,7 @@
     <fieldset>
         <button id="send" > S'inscrire</button>
     </fieldset>
-    <a href="">Vous avez déjà un compte ?</a>
+    <a id="se_connecter" onclick="changerform()">Vous avez déjà un compte ?</a>
     </div>
 
 
@@ -42,10 +42,9 @@
             <input type="password" id="password" name="password">
         </fieldset>
         <fieldset>
-            <button id="send" > Se connecter
-            </button>
+            <button id="send" > Se connecter</button>
         </fieldset>
-        <a href="">Vous n'avez pas de compte?</a>
+        <a id="inscrire" onclick="changerform()">Vous n'avez pas de compte?</a>
     </div>
 </form>
 

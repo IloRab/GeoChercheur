@@ -12,6 +12,10 @@
   border-color: black;*/
 }
 
+body{
+  background-image: url("../assets/img/acceuil/1920x1200_px_China_clouds_field_forest_Green_Hill_landscape-789536.jpg");
+}
+
 
 /*Message de bienvenue*/
 
@@ -77,7 +81,8 @@
   margin: auto;
   height: 350px;
   overflow: hidden;
-  border-radius: 30px;
+  opacity: 0,5;
+  
 }
 .slide-menu {
   position: absolute;
