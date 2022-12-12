@@ -13,7 +13,7 @@
 }
 
 body{
-  background-image: url("../assets/img/acceuil/1920x1200_px_China_clouds_field_forest_Green_Hill_landscape-789536.jpg");
+  background-image: url("../assets/img/acceuil/1920x1200_px_clouds_forest_Green_nature-833665.jpg");
 }
 
 
@@ -40,14 +40,23 @@ body{
 
 .bienvenue{
   justify-content: center;
-  margin: 20px 0 20px 0;
+  margin: 40px 0 20px 0;
   margin-inline: 30%;
   padding-bottom: 20px;
+}
+
+.bienvenue .title {
+  padding-bottom: 20px;
+}
+
+.bienvenue p{
+  text-align: center;
 }
 
 .title{
   font-size: 2.5em;
   text-align: center;
+
 }
 
 /*Responsivité de la page*/
@@ -81,7 +90,7 @@ body{
   margin: auto;
   height: 350px;
   overflow: hidden;
-  opacity: 0,5;
+  
   
 }
 .slide-menu {
@@ -107,6 +116,7 @@ body{
 }
 
 .slide-item {
+  opacity: 0;
   width: 100%;
   height: 300px;
   position: absolute;
@@ -115,14 +125,30 @@ body{
   z-index: 10;
   transition: left 0s 0.75s;
   object-fit: cover;
+  background-color: rgba(115,169,173,0.5);
+  border-radius: 20px;
 }
 
+.slide-item p{
+  font-size: large;
+  padding: 30px 10px 30px 10px;
+}
 
+.slide-item img{
+  width: 10em;
+  padding: 10px 10px 10px 10px;
+}
+.slide-input{
+  display: none;
+}
 .slide-input:checked + .slide-item {
+
   left: 0;
   z-index: 100;
-  transition: left 0.65s ease-out;
+  transition: left 0.5s ease-out,opacity 0.5s ease-out;
+  opacity: 1;
 }
+
 
 /*CSS pour le formulaire*/
 
@@ -183,7 +209,7 @@ form a:hover{
   text-decoration:underline;
 }
 
-form div fieldset legend{
+form fieldset legend{
   display: block;
   margin-left: auto;
   margin-right: auto;
