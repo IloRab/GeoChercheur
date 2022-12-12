@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/global.css" rel="stylesheet">
     <link href="css/style_acceuil.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="js/acceuil.js"></script>
 <body>
     <header class="bienvenue-header">
@@ -13,7 +14,7 @@
     </header>
 
 
-    <form id="SignUp" name="SignUp" method="POST" url="">
+    <form id="SignUp"  method="post">
         <h6>Formulaire d'inscription</h6>
     <fieldset>
         <legend> Nom </legend>
@@ -25,25 +26,25 @@
         <input type="password" id="password" name="password">
     </fieldset>
     <fieldset>
-        <button id="inscri" type="submit"> S'inscrire</button>
+        <button type="submit"> S'inscrire</button>
     </fieldset>
     <a id="se_connecter" >Vous avez déjà un compte ?</a>
     </form>
 
 
-    <form id="SignIn" name="SignIn" method="POST" url="">
+    <form id="SignIn"  method="post" >
         <h6>Formulaire de connexion</h6>
         <fieldset>
             <legend> Nom </legend>
-            <input type="text" id="nom" name="pseudo" >
+            <input type="text" id="nom" name="pseudo" required >
         </fieldset>
     
         <fieldset>
             <legend> Mot de passe </legend>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required>
         </fieldset>
         <fieldset>
-            <button id="connect" type="submit">Connexion</button>
+            <button type="submit">Connexion</button>
         </fieldset>
         <a id="inscrire">Vous n'avez pas de compte?</a>
     </form>

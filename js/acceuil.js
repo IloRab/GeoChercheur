@@ -1,38 +1,54 @@
-function changer_form(){
-    console.log("izeuhfuiozhfozef")
-    var form1 = document.getElementById('SignUp')
-    var form2 = document.getElementById('SignIn')
 
-    /*var forminscri = document.getElementById('inscrire')
-    var formconnect = document.getElementById('se_connecter')*/
-    console.log(form1.style)
+var form1;
+var form2;
 
-    if (form1.style.display == 'none'){
-        form1.style.display= 'block'
-        form2.style.display= 'none'
-        console.log(1)
-    }
-
-    console.log(form1.style.display)
-    if (form2.style.display== 'none' ){
-        form2.style.display= 'block'
-        form1.style.display= 'none'
-        console.log(2)
-    }
-}
-
-window.addEventListener("load",init)
+$(document).ready(init);
 
 function init(){
-    let but1 = document.getElementById("se_connecter")
-    let but2 = document.getElementById("inscrire")
+    let but1 = $("#se_connecter")
+    let but2 = $("#inscrire")
 
-    var form1 = document.getElementById('SignUp')
-    var form2 = document.getElementById('SignIn')
+    form1 = $('#SignUp');
+    form2 = $('#SignIn');
 
-    form1.style.display = 'block'
-    form2.style.display = 'none'
+    form2.css("display", 'block');
+    form1.css("display", 'none');
 
-    but1.addEventListener("click",changer_form)
-    but2.addEventListener("click",changer_form)
+    but1.click(changer_form);
+    but2.click(changer_form)
+
+    form1.submit(function(){
+        $.ajax({
+            type: "POST",
+            url: "PHP/register.php",
+            data : form1.serialize(),
+            success : function(){
+                console.log("Requete reussi !");
+            }
+        })
+    });
+
+    form2.submit(function () {
+        $.ajax({
+            type: "POST",
+            url: "PHP/login.php",
+            data: form2.serialize(),
+            success: function () {
+                console.log("Requete reussi !");
+            }
+        });
+    })
 }
+
+function changer_form(){
+
+    if (form1.css("display") == 'none'){
+        form1.css("display", 'block');
+        form2.css("display", 'none');
+    }else{
+        form2.css("display", 'block');
+        form1.css("display", 'none');
+    }
+}
+
+

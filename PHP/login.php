@@ -28,16 +28,16 @@ if ($pseudo  != "" && $password != "") {
             );
 
             $_SESSION['LOGGED_USER'] = $loggedUser;
-            require("accueil_connecte.php");
+            require("jouer.html");
         } else {
             $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
-            require("accueil_connexion.php");
+            require("accueil_connecte.html");
         }
     }
 }
 else {
     $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
-    require("accueil_connexion.php");
+    require("accueil_connecte.html");
 }
 
 // Si le cookie ou la session sont présentes
