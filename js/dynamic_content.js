@@ -61,13 +61,13 @@ function ligne_rang(rank_data) {
 
 function carte_parcour(parcour_data) {
   const card = document.createElement("article");
-  card.className = "parcours";
+  card.className = "parcours focus-grow";
 
 
   append_new(card, "img",
     {
       src: parcour_data.thumbnail,
-      alt: "parcour thumbnail"
+      alt: "Thumbnail pour le parcours " + parcour_data.nom_parcour
     }
   )
   append_new(card, "h3",
@@ -85,7 +85,7 @@ function carte_parcour(parcour_data) {
   )
   append_new(card, "a",
     {
-      className: "play",
+      className: "button focus-grow",
       textContent: "play",
       href: "#"
     }

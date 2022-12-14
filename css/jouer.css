@@ -36,31 +36,17 @@
   aspect-ratio: 16 / 9;
 }
 
-.parcours:has(.play:focus){
-  scale: 1.05 1.05;
+.parcours p {
+  text-align: left;
+  margin: 0 1em;
 }
 
-.play {
-  border: none;
-  border-radius: 15px;
-  width: min-content;
-
-  color: white;
-  background: green;
-  padding: 0.5em 1.5em;
-
-  font-weight: bolder;
-
-  text-transform: uppercase;
-  align-self: center;
+.parcours:focus-within{
+  scale: 1.05 1.05;
 }
 
 .score-nb {
   font-weight: bold;
-}
-
-:is(.parcours, .play):hover {
-  scale: 1.05 1.05;
 }
 
 .play {

@@ -13,7 +13,9 @@
 }
 
 body{
+  backdrop-filter: brightness(0.6);
   background-image: url("../assets/img/acceuil/1920x1200_px_clouds_forest_Green_nature-833665.jpg");
+  height: 100%;
 }
 
 
@@ -85,13 +87,10 @@ body{
 /*Le CSS du carroussel*/
 
 .slider-container {
-  max-width: 800px;
-  position: relative;
-  margin: auto;
+  width: min(90vw, 800px);
   height: 350px;
+  position: relative;
   overflow: hidden;
-  
-  
 }
 .slide-menu {
   position: absolute;
@@ -121,7 +120,7 @@ body{
   height: 300px;
   position: absolute;
   top: 0;
-  left: 100%;
+  /* left: 100%; */
   z-index: 10;
   transition: left 0s 0.75s;
   object-fit: cover;

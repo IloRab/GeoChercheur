@@ -27,11 +27,13 @@
 }
 
 .navbar-list a {
+  display: inline-block;
+  width: 100%;
   color: inherit;
   text-decoration: inherit;
 }
 
-.navbar-list li:hover {
+.navbar-list :is(li, a):is(:hover, :focus) {
   font-weight: 1000;
   color: yellow;
 }
@@ -59,10 +61,6 @@
   color: white;
   text-decoration: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.account:hover{
-  scale: 1.05 1.05;
 }
 
 .account img {
@@ -142,16 +140,11 @@
     grid-row:2;
   }
 
-  .navbar-checkbox:checked ~ .navbar-list {
+  .navbar-checkbox:checked ~ .navbar-list:not(:focus-within) {
     max-height: 0;
     margin: 0;
     padding: 0;
     opacity: 0;
-    /* transition:  */
-    /*   max-height 500ms ease-in-out, */
-    /*   margin 1s ease-in-out,  */
-    /*   padding 1s ease-in-out,  */
-    /*   opacity 400ms ease-in; */
     overflow: hidden;
   }
 

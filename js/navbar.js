@@ -8,50 +8,7 @@ class NavBar extends HTMLElement {
     this.attachShadow({ mode: "open" }); 
 
     const navbar = document.createElement("nav");
-    navbar.className = "main-navbar";
-    this.append_new(navbar, "img",
-      {
-        class: "logo",
-        src: "assets/img/tmp-logo2.png",
-        alt: "logo"
-      }
-    );
-
-    this.append_new(navbar, "input",
-      {
-        className:"navbar-checkbox",
-        type: "checkbox",
-        name: "navbar-checkbox",
-        id: "navbar-checkbox",
-      }
-    );
-
-    this.append_new(navbar, "label", 
-      {
-        className: "navbar-checkbox-label",
-        for: "navbar-checkbox",
-        innerHTML: "<span></span>"
-      }
-    );
-
-    this.append_new(navbar, "ul",
-      {
-        className: "navbar-list",
-        innerHTML: `
-            <li><a href="jouer.html">Jouer</a></li>
-            <li><a href="">Créer</a></li>
-            <li><a href="leaderboard.html">Classement</a></li>`
-      }
-    )
-
-    this.append_new(navbar, "input",
-      {
-        id: "search-bar",
-        className: "search-bar",
-        type: "text",
-      }
-    )
-
+    navbar.className = "main-navbar focus-grow";
     navbar.innerHTML = `
           <img class="logo" src="assets/img/tmp-logo2.png" alt="logo">
           <input class="navbar-checkbox" type="checkbox" name="navbar-checkbox" id="navbar-checkbox" checked>
@@ -97,7 +54,7 @@ function search(search_str) {
 
     for (const article of articles) {
       let title = article.getElementsByTagName("h3")[0].textContent.toLowerCase();
-      let in_query = title.includes(search_str.toLowerCase()) || search_str === "";
+      let in_query = search_str.trim().toLowerCase().split(" ").some(keyword => title.includes(keyword)) || search_str === "";
 
       article.style.visibility = (in_query)? "visible" : "hidden";
       article.style.maxHeight =  (in_query)? "1000px" : 0;
