@@ -12,6 +12,10 @@
   border-color: black;*/
 }
 
+body{
+  background-image: url("../assets/img/acceuil/1920x1200_px_clouds_forest_Green_nature-833665.jpg");
+}
+
 
 /*Message de bienvenue*/
 
@@ -36,14 +40,23 @@
 
 .bienvenue{
   justify-content: center;
-  margin: 20px 0 20px 0;
+  margin: 40px 0 20px 0;
   margin-inline: 30%;
   padding-bottom: 20px;
+}
+
+.bienvenue .title {
+  padding-bottom: 20px;
+}
+
+.bienvenue p{
+  text-align: center;
 }
 
 .title{
   font-size: 2.5em;
   text-align: center;
+
 }
 
 /*Responsivité de la page*/
@@ -77,6 +90,8 @@
   margin: auto;
   height: 350px;
   overflow: hidden;
+  
+  
 }
 .slide-menu {
   position: absolute;
@@ -101,6 +116,7 @@
 }
 
 .slide-item {
+  opacity: 0;
   width: 100%;
   height: 300px;
   position: absolute;
@@ -109,11 +125,125 @@
   z-index: 10;
   transition: left 0s 0.75s;
   object-fit: cover;
+  background-color: rgba(115,169,173,0.5);
+  border-radius: 20px;
 }
 
+.slide-item p{
+  font-size: large;
+  padding: 30px 10px 30px 10px;
+}
 
+.slide-item img{
+  width: 10em;
+  padding: 10px 10px 10px 10px;
+}
+.slide-input{
+  display: none;
+}
 .slide-input:checked + .slide-item {
+
   left: 0;
   z-index: 100;
-  transition: left 0.65s ease-out;
+  transition: left 0.5s ease-out,opacity 0.5s ease-out;
+  opacity: 1;
 }
+
+
+/*CSS pour le formulaire*/
+
+form{
+  justify-content: center;
+  align-content: center;
+  margin: 20px 0 20px 0;
+  margin-inline: 30%;
+  padding-bottom: 20px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+#SignIn{
+  display: none;
+}
+
+fieldset{
+  border: none;
+  padding: 1em;
+}
+
+form fieldset input{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: white;
+  width: 20em;
+  height: 2em;
+}
+
+form button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+  height: 40px;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: white;
+  font-style: oblique;
+  font-size: 20px;
+  background-color: rgb(4, 170, 109);
+  color: white;
+  cursor: pointer;
+}
+
+form a{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+  text-decoration:none;
+  cursor: pointer;
+}
+
+form a:hover{
+  text-decoration:underline;
+}
+form h6{
+  padding-top: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-style: oblique;
+}
+form fieldset legend{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-style: oblique;
+}
+
+@media screen and (max-width: 767px){
+  form{
+    margin: auto;
+  }
+}
+
+form button:focus {  
+  height: 40vh;
+  width: 25vw;
+}
+
+form button:hover {
+  width: 8rem;
+  height: 3rem;
+  transition: 
+    height 500ms ease-in-out,
+    width 500ms ease-in-out;
+}
+
