@@ -11,7 +11,7 @@ function init(){
     form1 = $('#SignUp');
     form2 = $('#SignIn');
 
-    form2.css("display", 'block');
+    form2.css("display", 'flex');
     form1.css("display", 'none');
 
     but1.click(changer_form);
@@ -43,10 +43,10 @@ function init(){
 function changer_form(){
 
     if (form1.css("display") == 'none'){
-        form1.css("display", 'block');
+        form1.css("display", 'flex');
         form2.css("display", 'none');
     }else{
-        form2.css("display", 'block');
+        form2.css("display", 'flex');
         form1.css("display", 'none');
     }
 }
