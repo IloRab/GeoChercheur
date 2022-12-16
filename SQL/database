@@ -25,7 +25,8 @@ CREATE TABLE Client(
 
 CREATE TABLE Question(
    idQuestion INT AUTO_INCREMENT,
-   coordonnees GEOMETRY NOT NULL,
+   latitude DOUBLE NOT NULL,
+   longitude DOUBLE NOT NULL,
    imageQ VARCHAR(100) NOT NULL,
    idClient INT,
    CONSTRAINT PK_Question PRIMARY KEY(idQuestion),
@@ -82,16 +83,16 @@ DROP FUNCTION IF EXISTS getScoreMoyen;
 DROP PROCEDURE IF EXISTS sauvegarde;
 
 DELIMITER $
-CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50))
+CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50), icon_ VARCHAR(100))
 BEGIN
-	INSERT INTO Client (idClient, pseudo, mdp) VALUES (NULL, Pseudo_, Mdp);
+	INSERT INTO Client (idClient, pseudo, mdp,icon) VALUES (NULL, Pseudo_, Mdp, icon_);
 END $
 
 
 DELIMITER $
-CREATE PROCEDURE addQuestion(coordonnees_ GEOMETRY, lienImage_ VARCHAR(50), idClient_ INT)
+CREATE PROCEDURE addQuestion(latitude_ DOUBLE, longitude_ DOUBLE, lienImage_ VARCHAR(50), idClient_ INT)
 BEGIN
-	INSERT INTO Question (idQuestion, coordonnees, lienImage, idClient) VALUES (NULL, coordonnees_, lienImage_, idClient_);
+	INSERT INTO Question (idQuestion, coordonnees, lienImage, idClient) VALUES (NULL, latitude_, longitude_, lienImage_, idClient_);
 END $
 
 

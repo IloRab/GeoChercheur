@@ -16,7 +16,7 @@
   </header>
 
   <main class="flex-column flex-col-vert-center">
-    <form id="SignUp" class="flex-column" method="post">
+    <form id="SignUp" class="flex-column" method="post" action="PHP/register.php">
       <h2 class="form-title" >Formulaire d'inscription</h2>
       <fieldset>
         <legend>Nom</legend>
@@ -34,8 +34,8 @@
     </form>
 
 
-    <form id="SignIn" class="flex-column" method="post">
-      <h2  class="form-title">Formulaire de connexion</h2>
+    <form id="SignIn" class="flex-column" method="post" action="PHP/login.php">
+      <h2  class="form-title">Se connecter</h2>
       <fieldset>
         <legend>Nom</legend>
         <input type="text" id="nom" name="pseudo" required>

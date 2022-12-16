@@ -5,46 +5,44 @@ $password = isset($_POST["password"])? $_POST["password"] : "";
 
 if ($pseudo  != "" && $password != "") {
     require("connectServer.php");
-    foreach ($clients as $client) {
-        if ( $client['pseudo'] === $pseudo && $client['password'] === $password ) {
+    // Récupération des variables à l'aide du client MySQL
+    try{
+        $usersStatement = $mysqlClient->prepare('SELECT * FROM Client where pseudo = ? and mdp = ?');
+        $usersStatement->bindParam(1,$pseudo);
+        $usersStatement->bindParam(2,$password);
+        $usersStatement->execute();
+        $client = $usersStatement->fetchAll();
+        if (count($client) > 0 ) {
             $token = "";
             $loggedUser = [
                 'pseudo' => $pseudo,
                 'token' => $token,
-                'idClient' => $client['idClient'],
+                'idClient' => $client['idClient']
             ];
-
             /**
              * Cookie qui expire dans un an
              */
             setcookie(
                 'LOGGED_USER',
                 $loggedUser['pseudo'],
-                [
-                    'expires' => time() + 365*24*3600,
-                    'secure' => true,
-                    'httponly' => true,
-                ]
+                time() + 365*24*3600
             );
 
             $_SESSION['LOGGED_USER'] = $loggedUser;
-            require("jouer.html");
-        } else {
-            $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
-            require("accueil_connecte.html");
+            header("Location: ../jouer.html");
         }
+        else{
+            echo 'Les informations envoyées ne permettent pas de vous identifier ';
+            header("Location: ../login.html");
+        }
+    }catch(Exception $exception){
+        die('Erreur : '.$exception->getMessage());
     }
 }
 else {
-    $errorMessage = 'Les informations envoyées ne permettent pas de vous identifier ';
-    require("accueil_connecte.html");
+    echo 'Les informations envoyées ne permettent pas de vous identifier ';
+    header("Location: ../login.html");
 }
 
-// Si le cookie ou la session sont présentes
-if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER']['pseudo'])) {
-    $loggedUser = [
-        'pseudo' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER']['pseudo'],
-    ];
-}
 
 ?>
