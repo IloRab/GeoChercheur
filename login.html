@@ -16,16 +16,25 @@
   </header>
 
   <main class="flex-column flex-col-vert-center">
-    <form id="SignUp" class="flex-column" method="post" action="PHP/register.php">
+    <form id="SignUp" class="flex-column" method="post" action="PHP/register.php" enctype="multipart/form-data">
       <h2 class="form-title" >Formulaire d'inscription</h2>
       <fieldset>
-        <legend>Nom</legend>
-        <input type="text" id="nom" name="pseudo">
+        <img src="assets/img/doggos/brown.jpg" alt="icon" id="image" style="width:200px; border-radius: 70%;" >
+      </fieldset>
+      <fieldset>
+        <legend>Photo de profil</legend>
+        <input type="hidden" name="MAX_FILE_SIZE" value="200000">
+        <label for="file" class="label-file">Choisir une image pour la photo</label>
+        <input type="file"  name="icon" accept=".jpg, .png, .jpeg">
+      </fieldset>
+      <fieldset>
+        <legend>Pseudo</legend>
+        <input type="text"  name="pseudo" placeholder="Inscrire le pseudo" required>
       </fieldset>
 
       <fieldset>
         <legend>Mot de passe</legend>
-        <input type="password" id="password" name="password">
+        <input type="password"  name="password" placeholder="Inscrire le mot de passe" required>
       </fieldset>
       <fieldset>
         <button type="submit" class="button"> S'inscrire</button>
@@ -37,13 +46,13 @@
     <form id="SignIn" class="flex-column" method="post" action="PHP/login.php">
       <h2  class="form-title">Se connecter</h2>
       <fieldset>
-        <legend>Nom</legend>
-        <input type="text" id="nom" name="pseudo" required>
+        <legend>Pseudo</legend>
+        <input type="text"  name="pseudo" placeholder="Inscrire le mot de passe" required>
       </fieldset>
 
       <fieldset>
         <legend>Mot de passe</legend>
-        <input type="password" id="password" name="password" required>
+        <input type="password"  name="password"  placeholder="Inscrire le mot de passe" required>
       </fieldset>
       <fieldset>
         <button class="button" type="submit">Connexion</button>

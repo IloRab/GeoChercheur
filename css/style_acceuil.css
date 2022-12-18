@@ -134,14 +134,12 @@ body{
 form{
   justify-content: center;
   align-content: center;
-
   margin: 20px 0 20px 0;
   margin-inline: 30%;
   padding-bottom: 20px;
   border-radius: 30px;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
-
   width: min(80vw, 800px);
   box-shadow: var(--shadow);
 }
@@ -154,6 +152,25 @@ form{
 fieldset{
   border: none;
   padding: 1em;
+  margin: 4px;
+}
+
+.label-file {
+    cursor: pointer;
+    color: #00b1ca;
+    font-weight: bold;
+}
+.label-file:hover {
+    color: #25a5c4;
+}
+
+.input-file {
+    display: none;
+}
+
+#icon{
+  display: none;
+  border-style: none;
 }
 
 form fieldset input{
@@ -163,6 +180,7 @@ form fieldset input{
   border-color: white;
   width: 20em;
   height: 2em;
+  padding-left: 1em;
 }
 
 form a{

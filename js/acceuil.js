@@ -1,10 +1,16 @@
-
 var form1;
 var form2;
+var image;
+var e;
 
 $(document).ready(init);
 
 function init(){
+
+    // L'image img#image
+    image = $("#image");
+    e = $("input[name='icon']");
+    e.change();
     let but1 = $("#se_connecter")
     let but2 = $("#inscrire")
 
@@ -17,27 +23,6 @@ function init(){
     but1.click(changer_form);
     but2.click(changer_form)
 
-    form1.submit(function(){
-        $.ajax({
-            type: "POST",
-            url: "PHP/register.php",
-            data : form1.serialize(),
-            success : function(){
-                console.log("Requete reussi !");
-            }
-        })
-    });
-
-    form2.submit(function () {
-        $.ajax({
-            type: "POST",
-            url: "PHP/login.php",
-            data: form2.serialize(),
-            success: function () {
-                console.log("Requete reussi !");
-            }
-        });
-    })
 }
 
 function changer_form(){
@@ -51,4 +36,21 @@ function changer_form(){
     }
 }
 
+// La fonction previewPicture
+function previewPicture() {
+    // e.files contient un objet FileList
+    const [picture] = e.files
+
+    // "picture" est un objet File
+    if (picture) {
+        // Les types de fichier autorisés
+        var types = [ "image/jpg", "image/jpeg", "image/png" ];
+        
+        // Vérification si "picture.type" se trouve dans "types"
+        if (types.includes(picture.type)) {
+            // On change l'URL de l'image
+            image.attr("src", URL.createObjectURL(picture));
+        }
+    }
+} 
 
