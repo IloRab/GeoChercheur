@@ -157,20 +157,11 @@ fieldset{
 
 .label-file {
     cursor: pointer;
-    color: #00b1ca;
-    font-weight: bold;
-}
-.label-file:hover {
-    color: #25a5c4;
 }
 
-.input-file {
-    display: none;
-}
 
 #icon{
   display: none;
-  border-style: none;
 }
 
 form fieldset input{
@@ -190,9 +181,13 @@ form a{
   text-decoration:none;
   cursor: pointer;
 }
+.button{
+  cursor: pointer;
+}
 
-form a:hover{
+form a:hover, .label-file:hover{
   text-decoration:underline;
+  
 }
 
 form fieldset legend{

@@ -17,6 +17,7 @@ if ($pseudo  != "" && $password != "") {
             $loggedUser = [
                 'pseudo' => $pseudo,
                 'token' => $token,
+                'icon' => $client['icon'],
                 'idClient' => $client['idClient']
             ];
             /**
@@ -32,7 +33,7 @@ if ($pseudo  != "" && $password != "") {
             header("Location: ../jouer.html");
         }
         else{
-            echo 'Les informations envoyées ne permettent pas de vous identifier ';
+            echo "<h6><script> alert('Les informations envoyées ne permettent pas de vous identifier ') </script></h6>";
             header("Location: ../login.html");
         }
     }catch(Exception $exception){
@@ -40,7 +41,7 @@ if ($pseudo  != "" && $password != "") {
     }
 }
 else {
-    echo 'Les informations envoyées ne permettent pas de vous identifier ';
+    echo "<h6><script> alert('Les informations envoyées ne permettent pas de vous identifier ') </script></h6>";
     header("Location: ../login.html");
 }
 

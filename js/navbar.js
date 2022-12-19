@@ -18,13 +18,11 @@ class NavBar extends HTMLElement {
             <li><a href="">Créer</a></li>
             <li><a href="leaderboard.html">Classement</a></li>
           </ul>
-          <input id="search-bar" class="search-bar" type="text" name="" value="">
+          <input id="search-bar" class="search-bar" type="text" style="padding-left: 1em;" value="Recherche...">
           <a class="account" href="#">
-            <img src="assets/img/doggos/pug.jpg" alt="icon">
-            <p class="account-score">100</p>
+            <img id="account-icon" src="assets/img/doggos/pug.jpg" alt="icon">
+            <p id="account-score" class="account-score">100</p>
           </a>`;
-
-
 
     this.append_new(this.shadowRoot, "link", 
       {
@@ -34,7 +32,23 @@ class NavBar extends HTMLElement {
     );
 
     this.shadowRoot.append(navbar);
-
+    let account = [this.shadowRoot.getElementById("account-icon"),this.shadowRoot.getElementById("account-score")];
+    fetch("PHP/getDataPlayer.php")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        return response.json();
+    })
+    .then(function(json) {
+         console.log(account);
+         account[1].src = json.icon;
+         account[1].textContent = json.score;
+    })
+    .catch(function (e) {
+       console.log("Some error happened with the fect request for PHP/getDataPlayer.php : " + e.message)
+    })
+    
     let search_bar = this.shadowRoot.getElementById("search-bar");
 
     search_bar.addEventListener("change", () => {
@@ -49,6 +63,7 @@ class NavBar extends HTMLElement {
 
 customElements.define("nav-bar", NavBar);
 
+
 function search(search_str) {
     let articles = Array.from(document.querySelectorAll(".searchable-section article"));
 
@@ -61,3 +76,5 @@ function search(search_str) {
       article.style.maxWidth = (in_query)? "1000px" : 0;
     }
 }
+
+

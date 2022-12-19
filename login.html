@@ -19,13 +19,13 @@
     <form id="SignUp" class="flex-column" method="post" action="PHP/register.php" enctype="multipart/form-data">
       <h2 class="form-title" >Formulaire d'inscription</h2>
       <fieldset>
-        <img src="assets/img/doggos/brown.jpg" alt="icon" id="image" style="width:200px; border-radius: 70%;" >
+        <img src="assets/img/doggos/brown.jpg" alt="icon" id="image" style="width:190px; border-radius: 100%;" >
       </fieldset>
       <fieldset>
         <legend>Photo de profil</legend>
         <input type="hidden" name="MAX_FILE_SIZE" value="200000">
         <label for="file" class="label-file">Choisir une image pour la photo</label>
-        <input type="file"  name="icon" accept=".jpg, .png, .jpeg">
+        <input type="file" id="icon"  name="icon" accept=".jpg, .png, .jpeg" placeholder="Choisir une photo">
       </fieldset>
       <fieldset>
         <legend>Pseudo</legend>

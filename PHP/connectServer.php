@@ -17,5 +17,6 @@ try {
     die('Erreur : '.$exception->getMessage());
 }
 
+$_SESSION['LOGGED_USER'] = isset($_SESSION['LOGGED_USER'])? $_SESSION['LOGGED_USER'] : array(); 
 
 ?>

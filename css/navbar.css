@@ -76,7 +76,18 @@
   padding: 0;
   font-weight: bold;
 }
+.search-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -33px;
+}
 
+.search-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
 @media (min-width: 901px) {
   .search-bar:focus-visible {
     position: fixed;
