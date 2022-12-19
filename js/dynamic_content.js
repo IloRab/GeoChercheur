@@ -110,6 +110,8 @@ function carte_parcour(parcour_data) {
 
   card.append(score);
 
+  console.log(parcour_data)
+
   return card;
 }
 
