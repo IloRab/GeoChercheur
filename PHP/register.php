@@ -2,8 +2,8 @@
 session_start();
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
-$icon = isset($_FILES['icon']) ? $_FILES['aicon'] : "";
-
+$icon = isset($_FILES['icon']) ? $_FILES['icon'] : "";
+$null='assets/img/doggos/pug.jpg';
 if($pseudo != "" && $password != ""){
     require("connectServer.php");
     try{
@@ -19,11 +19,11 @@ if($pseudo != "" && $password != ""){
             }
             else //Sinon (la fonction renvoie FALSE).
             {
-                $sql->bindParam(3,NULL);
+                $sql->bindParam(3,$null);
             }
         }
         else
-            $sql->bindParam(3,NULL);
+            $sql->bindParam(3,$null);
         $sql->execute();
         $token = "";
         $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Client');

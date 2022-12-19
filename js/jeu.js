@@ -1,10 +1,10 @@
 window.addEventListener("load", jeu_init);
 
 function jeu_init(){
-    //let latitalea = Math.random()*360-180;
-    //let longalea = Math.random()*180-90;
-    let longalea = 2.2692497022078 ;
-    let latitalea = 48.843070851028 ;
+    let latitalea = Math.random()*360-180;
+    let longalea = Math.random()*180-90;
+    //let longalea = 2.2692497022078 ;
+    //let latitalea = 48.843070851028 ;
     let coord_alea = [latitalea,longalea];
     let bboxalea = [longalea-0.0000000005,latitalea-0.00000005,longalea+0.0000005,latitalea-0.00000005]
     leaflet(coord_alea);
@@ -41,7 +41,6 @@ function mapilary(bboxalea){
         i.src = src;
         i.frameborder = "0";
         document.getElementById("street").appendChild(i);
-        
     })                                                                                                                      
     .catch(function (e) {
        console.log("Some error jus happened with the fect request for " + e )

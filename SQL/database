@@ -10,10 +10,6 @@ DROP TABLE IF EXISTS ScoreTotal;
 DROP TABLE IF EXISTS Compose;
 
 
-
-
-
-
 CREATE TABLE Client(
    idClient INT AUTO_INCREMENT,
    icon VARCHAR(100) NOT NULL,
@@ -100,9 +96,9 @@ DELIMITER $
 CREATE PROCEDURE addParcours(nom VARCHAR(50), idCreateur INT, descriptionParcours TEXT, imageP VARCHAR(100))
 BEGIN
    DECLARE idParcours_ INT;
-	INSERT INTO Parcours (idParcours, nomParcours, idClient) VALUES (NULL, nom, idCreateur);
+	INSERT INTO Parcours (idParcours, nomParcours, idClient,descriptionParcours,imageP) VALUES (NULL, nom, idCreateur, descriptionParcours,imageP);
    SET idParcours_ = (SELECT LAST_INSERT_ID() FROM Parcours);
-   INSERT INTO ScoreTotal(idClient, idParcours, scoreTotal, nbParties ) VALUES (SELECT idClient, idParcours_,0,0 FROM Client);
+   INSERT INTO ScoreTotal(idClient, idParcours, scoreTotal, nbParties ) SELECT idClient, idParcours_,0,0 FROM Client;
 END $
 
 
@@ -142,4 +138,8 @@ BEGIN
    SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1
    WHERE idClient = idClient_ and idParcours = idParcours_ ;
 END $
+
+/*CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
+CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");*/
+
 
