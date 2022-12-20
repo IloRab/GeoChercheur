@@ -15,12 +15,12 @@ class NavBar extends HTMLElement {
           <label class="navbar-checkbox-label" for="navbar-checkbox"><span></span></label>
           <ul class="navbar-list">
             <li><a href="jouer.html">Jouer</a></li>
-            <li><a href="">Créer</a></li>
+            <li><a href="creer.html">Créer</a></li>
             <li><a href="leaderboard.html">Classement</a></li>
           </ul>
-          <input id="search-bar" class="search-bar" type="text" style="padding-left: 1em;" value="Recherche...">
+          <input id="search-bar" class="search-bar" type="text" value="Recherche...">
           <a class="account" href="#">
-            <img id="account-icon" src="assets/img/doggos/pug.jpg" alt="icon">
+            <img id="account-icon" src="#" alt="icon">
             <p id="account-score" class="account-score">100</p>
           </a>`;
 
@@ -41,8 +41,8 @@ class NavBar extends HTMLElement {
         return response.json();
     })
     .then(function(json) {
-         console.log(account);
-         account[1].src = json.icon;
+         console.log(account, json);
+         account[0].src = json.icon;
          account[1].textContent = json.score;
     })
     .catch(function (e) {

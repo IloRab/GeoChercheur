@@ -1,21 +1,15 @@
 <?php
-session_start();
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
-<<<<<<< HEAD
-$icon = isset($_FILES['icon']) ? $_FILES['icon'] : "assets/img/doggos/pug.jpg";
+$icon = isset($_FILES['icon']) ? $_FILES['icon'] : "assets/img/doggos/brown.jpg";
 
-=======
-$icon = isset($_FILES['icon']) ? $_FILES['icon'] : "";
-$null='assets/img/doggos/pug.jpg';
->>>>>>> 000be347fa545ccf7d986c3b823d3327dd1f950f
 if($pseudo != "" && $password != ""){
     require("connectServer.php");
     try{
         $sql = $mysqlClient->prepare('CALL addClient(?,?,?)');
         $sql->bindParam(1,$pseudo);
         $sql->bindParam(2,$password);
-        if($icon != "assets/img/doggos/pug.jpg"){
+        if($icon != "assets/img/doggos/brown.jpg"){
             $dossier = '../assets/img/icons/';
             $fichier = basename($icon['name']);
             if(move_uploaded_file($icon['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
@@ -25,19 +19,12 @@ if($pseudo != "" && $password != ""){
             }
             else //Sinon (la fonction renvoie FALSE).
             {
-<<<<<<< HEAD
+                $icon = "assets/img/doggos/brown.jpg";
                 $sql->bindParam(3,$icon);
             }
         }
         else
             $sql->bindParam(3,$icon);
-=======
-                $sql->bindParam(3,$null);
-            }
-        }
-        else
-            $sql->bindParam(3,$null);
->>>>>>> 000be347fa545ccf7d986c3b823d3327dd1f950f
         $sql->execute();
         $token = "";
         $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Client');
@@ -57,7 +44,6 @@ if($pseudo != "" && $password != ""){
             $loggedUser['pseudo'],
             time() + 365*24*3600
         );
-
         $_SESSION['LOGGED_USER'] = $loggedUser;
         header("Location: ../jouer.html");
     }catch(Exception $exception){

@@ -81,11 +81,7 @@ DROP PROCEDURE IF EXISTS sauvegarde;
 DELIMITER $
 CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50), icon_ VARCHAR(100))
 BEGIN
-   IF icon_ <> "" THEN
-	   INSERT INTO Client (idClient, pseudo, mdp,icon) VALUES (NULL, Pseudo_, Mdp, icon_);
-   ELSE 
-      INSERT INTO Client (idClient, pseudo, mdp) VALUES (NULL, Pseudo_, Mdp);
-   END IF;
+   INSERT INTO Client (idClient, pseudo, mdp,icon) VALUES (NULL, Pseudo_, Mdp, icon_);
 END $
 
 

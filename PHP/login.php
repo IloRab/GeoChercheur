@@ -1,5 +1,4 @@
 <?php
-session_start();
 $pseudo = isset($_POST["pseudo"])? $_POST["pseudo"] : "";
 $password = isset($_POST["password"])? $_POST["password"] : "";
 
@@ -28,7 +27,6 @@ if ($pseudo  != "" && $password != "") {
                 $loggedUser['pseudo'],
                 time() + 365*24*3600
             );
-
             $_SESSION['LOGGED_USER'] = $loggedUser;
             header("Location: ../jouer.html");
         }

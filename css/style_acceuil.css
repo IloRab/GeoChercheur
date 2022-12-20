@@ -102,8 +102,7 @@ body{
   object-fit: cover;
   background-color: rgba(115,169,173,0.5);
   border-radius: 20px;
-
-
+  text-align: center;
   --transition-duration: 250ms;
   transition: opacity var(--transition-duration) ease-out;
 }
@@ -148,11 +147,19 @@ form{
   text-align: center;
   font-style: oblique;
 }
+#SignIn{
+  display: flex;
+}
+#SignUp{
+  display: none;
+}
 
 fieldset{
   border: none;
   padding: 1em;
   margin: 4px;
+  text-align: center;
+  overflow: visible;
 }
 
 .label-file {
@@ -192,13 +199,49 @@ form a:hover, .label-file:hover{
 
 form fieldset legend{
   display: block;
-
   padding-bottom: 20px;
-
   width: 100%;
   text-align: center;
   font-size: 20px;
   font-style: oblique;
+}
+
+
+
+#message, #messageNom {
+  display:none;
+  padding: 0.1em;
+}
+.checkbox {
+  display: flex;
+  
+}
+.checkbox input{
+  width: 19px;
+}
+.checkbox p{
+  padding: 1em;
+}
+#message p, #messageNom p {
+  padding: 10px 35px;
+}
+
+.valid:before,.isvalid:before  {
+  position: relative;
+  left: -35px;
+  content: "✔";
+  color: green;
+}
+
+.invalid, .valid{
+  color: white;
+}
+
+.invalid:before, .novalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+  color: red;
 }
 
 @media screen and (max-width: 767px){

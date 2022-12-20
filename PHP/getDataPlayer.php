@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $idClient = isset($_SESSION['LOGGED_USER']['idClient'])? $_SESSION['LOGGED_USER']['idClient'] : "";
     $icon = isset($_SESSION['LOGGED_USER']['icon']) ? $_SESSION['LOGGED_USER']['icon'] : "assets/img/doggos/pug.jpg";
     if($idClient != "")

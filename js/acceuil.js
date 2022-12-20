@@ -46,9 +46,6 @@ function init(){
     form1 = $('#SignUp');
     form2 = $('#SignIn');
 
-    form2.css("display", 'flex');
-    form1.css("display", 'none');
-
     but1.click(changer_form);
     but2.click(changer_form)
 

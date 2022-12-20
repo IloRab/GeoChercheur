@@ -43,17 +43,25 @@
 }
 
 .search-bar {
-  height: 2rem;
-  width: 100%;
+  width: 151px;
+  font-size: 16px;
+  border: 2px solid #73a9ad;
   background: white;
-  border: none;
   border-radius: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  background-image: url('../assets/img/search.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
 
 .account {
   display: grid;
   align-items: center;
-  height: 50%;
+  height: 40%;
   background: #73a9ad;
   border-radius: 15px;
 
