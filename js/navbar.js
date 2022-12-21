@@ -14,9 +14,9 @@ class NavBar extends HTMLElement {
           <input class="navbar-checkbox" type="checkbox" name="navbar-checkbox" id="navbar-checkbox" checked>
           <label class="navbar-checkbox-label" for="navbar-checkbox"><span></span></label>
           <ul class="navbar-list">
-            <li><a href="jouer.html">Jouer</a></li>
-            <li><a href="creer.html">Créer</a></li>
-            <li><a href="leaderboard.html">Classement</a></li>
+            <li><a href="jouer.php">Jouer</a></li>
+            <li><a href="creer.php">Créer</a></li>
+            <li><a href="leaderboard.php">Classement</a></li>
           </ul>
           <input id="search-bar" class="search-bar" type="text" value="Recherche...">
           <a class="account" href="#">

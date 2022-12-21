@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
 $icon = isset($_FILES['icon']) ? $_FILES['icon'] : "assets/img/doggos/brown.jpg";
@@ -45,15 +46,11 @@ if($pseudo != "" && $password != ""){
             time() + 365*24*3600
         );
         $_SESSION['LOGGED_USER'] = $loggedUser;
-        header("Location: ../jouer.html");
+        header("Location: ../jouer.php");
     }catch(Exception $exception){
         die('Erreur : '.$exception->getMessage());
     }
    
-}
-else{
-    echo "<h6><script> alert('Les informations envoyées ne permettent pas de vous inscrire ') </script></h6>";
-    header("Location: ../login.html");
 }
 
 

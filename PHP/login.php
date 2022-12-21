@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pseudo = isset($_POST["pseudo"])? $_POST["pseudo"] : "";
 $password = isset($_POST["password"])? $_POST["password"] : "";
 
@@ -28,7 +29,8 @@ if ($pseudo  != "" && $password != "") {
                 time() + 365*24*3600
             );
             $_SESSION['LOGGED_USER'] = $loggedUser;
-            header("Location: ../jouer.html");
+            var_dump($_SESSION);
+            header("Location: ../jouer.php");
         }
         else{
             echo "<h6><script> alert('Les informations envoyées ne permettent pas de vous identifier ') </script></h6>";
@@ -38,10 +40,7 @@ if ($pseudo  != "" && $password != "") {
         die('Erreur : '.$exception->getMessage());
     }
 }
-else {
-    echo "<h6><script> alert('Les informations envoyées ne permettent pas de vous identifier ') </script></h6>";
-    header("Location: ../login.html");
-}
+
 
 
 ?>

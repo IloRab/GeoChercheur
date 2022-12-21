@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $desc = isset($_POST['description']) ? $_POST['description'] : "";
 $nom = isset($_POST['nom']) ? $_POST['lien'] : "";
 $src = isset($_POST['src']) ?  $_POST['src'] : "";

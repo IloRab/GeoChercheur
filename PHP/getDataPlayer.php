@@ -25,7 +25,7 @@
     }else{
         $array = array(
             "icon" => $icon,
-            "score" => 0,
+            "score" => 100,
         );
         header('Content-Type: application/json;charset=utf-8');
         echo json_encode($array);
