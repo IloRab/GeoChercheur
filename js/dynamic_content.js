@@ -11,11 +11,11 @@ function dynamic_init() {
 function display_dyn_content(current_page) {
 
   let contents = {
-    "jouer.php": {
+    "jouer.html": {
       url: "PHP/getParcours.php",
       generate: carte_parcour
     },
-    "leaderboard.php": {
+    "leaderboard.html": {
       url: "PHP/getLeaderBoard.php",
       generate: ligne_rang
     }
