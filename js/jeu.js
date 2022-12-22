@@ -1,24 +1,39 @@
+
+let longalea 
+let latitalea 
+let coord_alea 
+let bboxalea 
+let map
+let propositionj 
+let bt_valider 
+var ligne 
+
 window.addEventListener("load", jeu_init);
+window.addEventListener("click",function(e){poser(e);});
 
 function jeu_init(){
-    let latitalea = Math.random()*360-180;
-    let longalea = Math.random()*180-90;
-    //let longalea = 2.2692497022078 ;
-    //let latitalea = 48.843070851028 ;
-    let coord_alea = [latitalea,longalea];
-    let bboxalea = [longalea-0.0000000005,latitalea-0.00000005,longalea+0.0000005,latitalea-0.00000005]
+    //latitalea = Math.random()*360-180;
+    //longalea = Math.random()*180-90;
+    longalea = 2.2692497022078 ;
+    latitalea = 48.843070851028 ;
+    coord_alea = [latitalea,longalea];
+    bboxalea = [longalea-0.0000000005,latitalea-0.00000005,longalea+0.0000005,latitalea-0.00000005];
     leaflet(coord_alea);
     mapilary(bboxalea);
+    bt_valider = document.getElementById('validation');
+    bt_valider.addEventListener("click",valider);
+    
 }
 
 function leaflet(coord) {
     //let coord_iut = [48.84197804895268,2.267719848410252];
-    let map = L.map('minimap').setView(coord, 13);
+    map = L.map('minimap').setView(coord, 13);
     let layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     });
     layer.addTo(map);
+    //L.marker([latitalea,longalea]).addTo(map);
 }
 
 function mapilary(bboxalea){
@@ -45,5 +60,18 @@ function mapilary(bboxalea){
     .catch(function (e) {
        console.log("Some error jus happened with the fect request for " + e )
     })
-  
   }
+
+function poser(e){
+  var coord = map.mouseEventToLatLng(e);
+  var lat = coord.lat;
+  var lng = coord.lng;
+  if (propositionj) 
+    map.removeLayer(propositionj);
+  propositionj = L.marker([lat,lng]).addTo(map);
+}
+
+function valider(){
+  console.log("ok");
+  ligne = L.polyline([coord_alea,], {color:'red',weight:4}).addTo(map);
+}
