@@ -59,6 +59,7 @@
 }
 
 .account {
+  height: 60%;
   display: grid;
   align-items: center;
   background: #73a9ad;

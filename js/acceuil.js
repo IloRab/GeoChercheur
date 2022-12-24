@@ -62,21 +62,4 @@ function changer_form(){
     }
 }
 
-// La fonction previewPicture
-function previewPicture(e) {
-    // e.files contient un objet FileList
-    const [picture] = e.files;
-
-    // "picture" est un objet File
-    if (picture) {
-        // Les types de fichier autorisés
-        var types = [ "image/jpg", "image/jpeg", "image/png" ];
-        
-        // Vérification si "picture.type" se trouve dans "types"
-        if (types.includes(picture.type)) {
-            // On change l'URL de l'image
-            image.attr("src", URL.createObjectURL(picture));
-        }
-    }
-} 
 

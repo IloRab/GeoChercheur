@@ -41,7 +41,6 @@ class NavBar extends HTMLElement {
         return response.json();
     })
     .then(function(json) {
-         console.log(account, json);
          account[0].src = json.icon;
          account[1].textContent = json.score;
     })
