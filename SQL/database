@@ -10,10 +10,6 @@ DROP TABLE IF EXISTS ScoreTotal;
 DROP TABLE IF EXISTS Compose;
 
 
-
-
-
-
 CREATE TABLE Client(
    idClient INT AUTO_INCREMENT,
    icon VARCHAR(100) NOT NULL,
@@ -25,7 +21,8 @@ CREATE TABLE Client(
 
 CREATE TABLE Question(
    idQuestion INT AUTO_INCREMENT,
-   coordonnees GEOMETRY NOT NULL,
+   latitude DOUBLE NOT NULL,
+   longitude DOUBLE NOT NULL,
    imageQ VARCHAR(100) NOT NULL,
    idClient INT,
    CONSTRAINT PK_Question PRIMARY KEY(idQuestion),
@@ -82,16 +79,16 @@ DROP FUNCTION IF EXISTS getScoreMoyen;
 DROP PROCEDURE IF EXISTS sauvegarde;
 
 DELIMITER $
-CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50))
+CREATE PROCEDURE addClient(Pseudo_ VARCHAR(50), Mdp VARCHAR(50), icon_ VARCHAR(100))
 BEGIN
-	INSERT INTO Client (idClient, pseudo, mdp) VALUES (NULL, Pseudo_, Mdp);
+   INSERT INTO Client (idClient, pseudo, mdp,icon) VALUES (NULL, Pseudo_, Mdp, icon_);
 END $
 
 
 DELIMITER $
-CREATE PROCEDURE addQuestion(coordonnees_ GEOMETRY, lienImage_ VARCHAR(50), idClient_ INT)
+CREATE PROCEDURE addQuestion(latitude_ DOUBLE, longitude_ DOUBLE, lienImage_ VARCHAR(50), idClient_ INT)
 BEGIN
-	INSERT INTO Question (idQuestion, coordonnees, lienImage, idClient) VALUES (NULL, coordonnees_, lienImage_, idClient_);
+	INSERT INTO Question (idQuestion, coordonnees, lienImage, idClient) VALUES (NULL, latitude_, longitude_, lienImage_, idClient_);
 END $
 
 
@@ -99,9 +96,9 @@ DELIMITER $
 CREATE PROCEDURE addParcours(nom VARCHAR(50), idCreateur INT, descriptionParcours TEXT, imageP VARCHAR(100))
 BEGIN
    DECLARE idParcours_ INT;
-	INSERT INTO Parcours (idParcours, nomParcours, idClient) VALUES (NULL, nom, idCreateur);
+	INSERT INTO Parcours (idParcours, nomParcours, idClient,descriptionParcours,imageP) VALUES (NULL, nom, idCreateur, descriptionParcours,imageP);
    SET idParcours_ = (SELECT LAST_INSERT_ID() FROM Parcours);
-   INSERT INTO ScoreTotal(idClient, idParcours, scoreTotal, nbParties ) VALUES (SELECT idClient, idParcours_,0,0 FROM Client);
+   INSERT INTO ScoreTotal(idClient, idParcours, scoreTotal, nbParties ) SELECT idClient, idParcours_,0,0 FROM Client;
 END $
 
 
@@ -141,4 +138,8 @@ BEGIN
    SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1
    WHERE idClient = idClient_ and idParcours = idParcours_ ;
 END $
+
+/*CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
+CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");*/
+
 

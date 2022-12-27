@@ -17,25 +17,5 @@ try {
     die('Erreur : '.$exception->getMessage());
 }
 
-// Récupération des variables à l'aide du client MySQL
-$usersStatement = $mysqlClient->prepare('SELECT * FROM Client');
-$usersStatement->execute();
-$clients = $usersStatement->fetchAll();
-
-
-$usersStatement = $mysqlClient->prepare('SELECT * FROM Parcours');
-$usersStatement->execute();
-$parcours = $usersStatement->fetchAll();
-
-
-
-// Si le cookie est présent
-if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER']['pseudo'])) {
-    $loggedUser = [
-        'pseudo' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER']['pseudo'],
-    ];
-}
-
-
 
 ?>

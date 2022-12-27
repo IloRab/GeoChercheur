@@ -12,11 +12,15 @@ function display_dyn_content(current_page) {
 
   let contents = {
     "jouer.html": {
-      url: "assets/json/liste-parcours.json",
+      url: "PHP/getParcours.php",
       generate: carte_parcour
     },
+    "creer.html": {
+      url: "PHP/getParcours.php",
+      generate: add_parcours
+    },
     "leaderboard.html": {
-      url: "assets/json/classement-par-parcours.json",
+      url: "PHP/getLeaderBoard.php",
       generate: ligne_rang
     }
   }
@@ -31,8 +35,13 @@ function display_dyn_content(current_page) {
        return response.json();
    })
    .then(json => {
-      const dyn_section = document.getElementById("dynamic-section");
-      json.forEach(item => dyn_section.append(dyn_content.generate(item)))
+      if(current_page == "creer.html"){
+        const dyn_section = document.getElementsByClassName("cards")[0];
+        json.forEach(item => dyn_section.append(dyn_content.generate(item)));
+      }else{
+        const dyn_section = document.getElementById("dynamic-section");
+        json.forEach(item => dyn_section.append(dyn_content.generate(item)));
+      }
    })
    .catch(function () {
       console.log("Some error jus happened with the fect request for " + dyn_content.url)
@@ -57,6 +66,33 @@ function ligne_rang(rank_data) {
   )
 
   return rank
+}
+
+function add_parcours(data){
+  const card = document.createElement("div");
+  card.className = "container";
+  card.setAttribute("id", data.id_parcour);
+  card.style.backgroundImage = "url("+ data.thumbnail +")";
+  append_new(card, "div",{
+    className: "bg-text",
+    textContent: data.nom_parcour
+  });
+  
+  const middel = document.createElement("div");
+  middel.className = "middle";
+
+  const text = document.createElement("div");
+  text.className = "text";
+
+  append_new(text, "button",{
+    className: "button focus-grow",
+    textContent: "Ajouter",
+  });
+
+  middel.append(text);
+  card.append(middel);
+  return card;
+
 }
 
 function carte_parcour(parcour_data) {

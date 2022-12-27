@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>GeoChercheur - création</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/reset.css" rel="stylesheet">
+  <link href="css/global.css" rel="stylesheet">
+  <link href="css/dynamic_content.css" rel="stylesheet">
+  <link href="css/creer.css" rel="stylesheet">
+
+  <script src="js/navbar.js"></script>
+  <script src="js/dynamic_content.js"></script>
+  <script src="js/creer.js"></script>
+
+
+</head>
+
+<body>
+  <nav-bar></nav-bar>
+  <main id="main-content">
+    <article class="recap">
+      <h1 class="title">Vous pouvez ajouter<span>une question</span> à un parcours</h1>
+      <div class="cartes-terminee">Choissisez un parcours</div>
+    </article>
+    <div class="cards">
+    </div>
+    <div style="text-align: center;"> <a href="#" class="button focus-grow">Nouveau</a></div>
+    
+    
+    <div id="form" class="modal">
+      <span onclick="document.getElementById('form').style.display='none'" class="close" title="Close Modal">&times;</span>      
+      <form class="modal-content" method="post" action="PHP/ajout_question.php">
+        <div class="conteneur">
+          <h1>Ajout d'une question au parcours ...</h1>
+          <p>Remplissez ce formulaire : Les <b>coordonnees</b> et une <b>image</b> du lieu sont obligatoire</p>
+          <hr>
+          <fieldset>
+            <legend>Image</legend>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+            <label for="file" class="label-file">Choisir une image du lieu</label>
+            <input type="file" id="img"  name="img" accept=".jpg, .png, .jpeg">
+          </fieldset>
+          <fieldset>
+            <legend>Les coordonnées</legend>
+              <input type="hidden" name="id" required>
+              <label for="lat"><b>Latitude</b></label>
+              <input type="number" step="0.01" placeholder="Entrer la latitude" name="lat" required>
+              <label for="lon"><b>Longitude</b></label>
+              <input type="number" step="0.01" placeholder="Entrer la longitude" name="lon" required>
+          </fieldset>
+          <div class="chechbox">
+            <input  type="checkbox" name="accept" style="margin-bottom:15px" required>    
+            <p class="checkbox">En créeant une question vous donnez vos droits d'auteur sur celle-ci à <b>GeoChercheur</b>.</p>
+          </div>
+          <div class="clearfix" style="text-align: center; padding: 1em;">
+            <button type="button" class="cancelbtn">Abandonner</button>
+            <button type="submit" class="validbtn">Valider</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  </main>
+</body>
+
+</html>

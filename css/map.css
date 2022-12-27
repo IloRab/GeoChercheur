@@ -1,17 +1,18 @@
 .streetview {
-position: absolute;
+  position: absolute;
   width: 100%;
   height: 100%;
   margin: 0;
 
   top: 0;
   left: 0;
+  z-index: 0;
 }
 
 .minimap {
   position: absolute;
   background: var(--color1);
-  z-index: 9999;
+  z-index: 99;
 
   bottom: 1rem;
   right: 1rem;
@@ -67,4 +68,11 @@ position: absolute;
       width 500ms ease-in-out;
   }
   
+}
+
+#validation {
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  width: 100%;
 }
