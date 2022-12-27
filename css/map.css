@@ -8,19 +8,23 @@ position: absolute;
   left: 0;
 }
 
-
 .minimap {
   position: absolute;
   background: var(--color1);
   z-index: 9999;
 
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1rem;
+  right: 1rem;
 
-  width: 15rem;
-  height: 15rem;
+  --size: min(15rem, 40vw);
+  width: var(--size);
+  height: var(--size);
   aspect-ratio: 1 / 1;
+
   transition: 
+    border 250ms ease-out,
+    bottom 1s ease-out,
+    right 1s ease-out,
     width 500ms ease-in-out,
     height 1s ease-in-out;
 
@@ -31,16 +35,36 @@ position: absolute;
 .minimap:hover {
   width: 20rem;
   height: 20rem;
-  transition: 
+  transition:
+    border 250ms ease-out,
+    bottom 1s ease-out,
+    right 1s ease-out,
     height 500ms ease-in-out,
     width 500ms ease-in-out;
 }
 
-.minimap:focus { /** Separated for firefox compatibility **/ 
+.minimap:focus-within { 
   height: 90vh;
   width: 45vw;
 }
-.minimap:has(*:focus) {
-  height: 90vh;
-  width: 45vw;
+
+@media only screen and (max-width: 600px) {
+  .minimap:focus-within {
+    width: 100vw;
+    height: 50vh;
+
+    bottom: 50%;
+    right: 0;
+
+    border: 0px black double;
+    border-bottom: 5px black double;
+
+    transition:
+      border 250ms ease-out,
+      bottom 1s ease-out,
+      right 1s ease-out,
+      height 500ms ease-in-out,
+      width 500ms ease-in-out;
+  }
+  
 }
