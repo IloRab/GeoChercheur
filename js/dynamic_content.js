@@ -121,21 +121,16 @@ function carte_parcour(parcour_data) {
       textContent: parcour_data.description_parcour
     }
   )
-  let button = append_new(card, "button",
+  let button = append_new(card, "a",
     {
       className: "button focus-grow play",
       textContent: "play",
-<<<<<<< HEAD
       href: "jeu.html"
-=======
-      href: "#"
-      
->>>>>>> 878be99aae1cf18c06f8ede345d9df1e9f48ca2a
     }
   )
-  button.setAttribute("data-nom-parcours",parcour_data.nom_parcour) 
-  button.addEventListener("click",play)
-  card.append(document.createElement("hr"))
+  button.setAttribute("data-nom-parcours",parcour_data.nom_parcour);
+  button.addEventListener("click",play);
+  card.append(document.createElement("hr"));
  
 
 
