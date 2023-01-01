@@ -1,4 +1,3 @@
-
 let longalea 
 let latitalea 
 let coord_alea 
@@ -7,12 +6,12 @@ let map
 let propositionj 
 let bt_valider 
 var ligne 
+let reponse
 
 window.addEventListener("load", jeu_init);
-window.addEventListener("click",function(e){poser(e);});
 
 function jeu_init(){
-    //latitalea = Math.random()*360-180;
+     //latitalea = Math.random()*360-180;
     //longalea = Math.random()*180-90;
     longalea = 2.2692497022078 ;
     latitalea = 48.843070851028 ;
@@ -22,6 +21,7 @@ function jeu_init(){
     mapilary(bboxalea);
     bt_valider = document.getElementById('validation');
     bt_valider.addEventListener("click",valider);
+    document.getElementById("minimap").addEventListener("click",poser);
     
 }
 
@@ -29,11 +29,13 @@ function leaflet(coord) {
     //let coord_iut = [48.84197804895268,2.267719848410252];
     map = L.map('minimap').setView(coord, 13);
     let layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxBoundsViscosity: 1.0,
+      noWrap: true,  
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     });
     layer.addTo(map);
-    //L.marker([latitalea,longalea]).addTo(map);
+    
 }
 
 function mapilary(bboxalea){
@@ -73,5 +75,8 @@ function poser(e){
 
 function valider(){
   console.log("ok");
-  ligne = L.polyline([coord_alea,], {color:'red',weight:4}).addTo(map);
+
+  reponse = L.marker([latitalea,longalea]).addTo(map);
+  ligne = L.polyline([reponse._latlng,propositionj._latlng], {color:'red'}).addTo(map);
+  document.getElementById("minimap").removeEventListener("click",poser)
 }

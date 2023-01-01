@@ -121,14 +121,22 @@ function carte_parcour(parcour_data) {
       textContent: parcour_data.description_parcour
     }
   )
-  append_new(card, "a",
+  let button = append_new(card, "button",
     {
-      className: "button focus-grow",
+      className: "button focus-grow play",
       textContent: "play",
+<<<<<<< HEAD
       href: "jeu.html"
+=======
+      href: "#"
+      
+>>>>>>> 878be99aae1cf18c06f8ede345d9df1e9f48ca2a
     }
   )
+  button.setAttribute("data-nom-parcours",parcour_data.nom_parcour) 
+  button.addEventListener("click",play)
   card.append(document.createElement("hr"))
+ 
 
 
   const score = document.createElement("p");
@@ -152,5 +160,34 @@ function carte_parcour(parcour_data) {
 }
 
 function append_new(parent, child_type, child_attributes) {
-  parent.append(Object.assign(document.createElement(child_type), child_attributes));
+  let child = Object.assign(document.createElement(child_type), child_attributes)
+  parent.append(child);
+  return child;
+}
+
+function play(){
+  let ppname = this.getAttribute("data-nom-parcours")
+  fetch("PHP/getQuestions.php", 
+  { 
+    method: 'POST',
+    body: 'nomParcours=' + encodeURIComponent(ppname),
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    }
+  })
+   .then(response => {
+      console.log(response)
+       if (!response.ok) {
+           throw new Error("HTTP error " + response.status);
+       }
+       return response.text();
+   })
+   .then(json => {
+    console.log(json)
+    }
+   )
+   .catch(function (error) {
+      console.log("Some error jus happened with the fect request for " + "PHP/getQuestions.php")
+      console.log(error)
+   })
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let btns;
 
 $(document).ready(init);
@@ -25,4 +26,7 @@ function init(){
     
     console.log(btns);
 }
+=======
+
+>>>>>>> 878be99aae1cf18c06f8ede345d9df1e9f48ca2a
 
