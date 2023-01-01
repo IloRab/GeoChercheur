@@ -6,6 +6,7 @@
     margin: 4em auto;
     display: flex;
   }
+
   .container {
     background-position: center;
     background-repeat: no-repeat;
@@ -41,7 +42,7 @@
   }
   
   .bg-text {
-    display: none;
+    display: flex;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     color: white;
@@ -59,8 +60,15 @@
     backface-visibility: hidden;
   }
 
-  .label-file {
+.label-file {
     cursor: pointer;
+}
+#icon{
+  display: none;
+}
+
+button:hover {
+  cursor: pointer
 }
 
 fieldset{
@@ -90,9 +98,23 @@ fieldset legend{
   font-style: oblique;
 }
 
+label b{
+    padding: 1em;
+    display: block;
+}
+
+textarea{
+  border-radius: 6px;
+  width: 479px;
+  padding: 15px;
+  margin: 10px 0 22px 0;
+  display: inline-block;
+  background: #f1f1f1;
+}
+
 /* Full-width input fields */
-input[type=number]{
-  width: 90%;
+input[type=number] , input[type=text]{
+  width: 50%;
   padding: 15px;
   margin: 10px 0 22px 0;
   display: inline-block;
@@ -101,10 +123,11 @@ input[type=number]{
 }
 
 /* Add a background color when the inputs get focus */
-input[type=number]:focus{
+input[type=number]:focus,input[type=text]:focus, textarea:focus{
   background-color: #ddd;
   outline: none;
 }
+
 .checkbox {
   display: flex;
   
@@ -115,8 +138,9 @@ input[type=number]:focus{
 .checkbox p{
   padding: 1em;
 }
+
 /* Set a style for all buttons */
-button {
+form button {
   background-color: #04AA6D;
   color: white;
   padding: 14px 20px;
@@ -127,7 +151,7 @@ button {
   border-radius: 30px;
 }
 
-button:hover {
+form button:hover {
   opacity:0.5;
 }
 
@@ -144,7 +168,6 @@ button:hover {
 
 /* Add padding to container elements */
 .conteneur {
-  padding: 22px;
   background-color: #73a9ad;
   border-radius: 30px;
   text-align: center;
@@ -153,7 +176,7 @@ button:hover {
 /* The Modal (background) */
 .modal {
   color: black;
-  display: flex;
+  display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -172,7 +195,6 @@ button:hover {
   align-content: center;
   width: min(80vw, 800px);
   box-shadow: var(--shadow);
-  padding: 1em;
 }
 
 /* Style the horizontal ruler */

@@ -35,16 +35,18 @@ function display_dyn_content(current_page) {
        return response.json();
    })
    .then(json => {
+      let dyn_section;
       if(current_page == "creer.html"){
-        const dyn_section = document.getElementsByClassName("cards")[0];
-        json.forEach(item => dyn_section.append(dyn_content.generate(item)));
-      }else{
-        const dyn_section = document.getElementById("dynamic-section");
-        json.forEach(item => dyn_section.append(dyn_content.generate(item)));
+        dyn_section = document.getElementsByClassName("cards")[0];
       }
+      else{
+        dyn_section = document.getElementById("dynamic-section");
+      }
+      json.forEach(item => dyn_section.append(dyn_content.generate(item)));
    })
-   .catch(function () {
-      console.log("Some error jus happened with the fect request for " + dyn_content.url)
+   .catch(error => {
+      console.log("Some error jus happened with the fect request for " + dyn_content.url + " and " + current_page);
+      console.log(error);
    })
 }
 
@@ -98,7 +100,7 @@ function add_parcours(data){
 function carte_parcour(parcour_data) {
   const card = document.createElement("article");
   card.className = "parcours focus-grow";
-
+  card.setAttribute("id", parcour_data.id_parcour);
 
   append_new(card, "img",
     {
@@ -123,7 +125,7 @@ function carte_parcour(parcour_data) {
     {
       className: "button focus-grow",
       textContent: "play",
-      href: "#"
+      href: "jeu.html"
     }
   )
   card.append(document.createElement("hr"))

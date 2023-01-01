@@ -13,8 +13,6 @@
   <script src="js/navbar.js"></script>
   <script src="js/dynamic_content.js"></script>
   <script src="js/creer.js"></script>
-
-
 </head>
 
 <body>
@@ -26,25 +24,26 @@
     </article>
     <div class="cards">
     </div>
-    <div style="text-align: center;"> <a href="#" class="button focus-grow">Nouveau</a></div>
+    
+    <div style="text-align: center; padding-bottom: 4em;"> <button onclick="btn3()" class="button">Nouveau</button></div>
     
     
     <div id="form" class="modal">
-      <span onclick="document.getElementById('form').style.display='none'" class="close" title="Close Modal">&times;</span>      
-      <form class="modal-content" method="post" action="PHP/ajout_question.php">
+      <span onclick="btn1()" class="close" title="Close Modal">&times;</span>      
+      <form class="modal-content" method="post" action="PHP/ajout_question.php" enctype="multipart/form-data">
         <div class="conteneur">
-          <h1>Ajout d'une question au parcours ...</h1>
+          <h1 style="text-align: center; padding-top: 1em;">Ajout d'une question au parcours  </h1>
           <p>Remplissez ce formulaire : Les <b>coordonnees</b> et une <b>image</b> du lieu sont obligatoire</p>
           <hr>
           <fieldset>
             <legend>Image</legend>
             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <label for="file" class="label-file">Choisir une image du lieu</label>
-            <input type="file" id="img"  name="img" accept=".jpg, .png, .jpeg">
+            <input type="file" id="img"  name="src" accept=".jpg, .png, .jpeg">
           </fieldset>
           <fieldset>
             <legend>Les coordonnées</legend>
-              <input type="hidden" name="id" required>
+              <input type="hidden" id="idP" name="id" value="">
               <label for="lat"><b>Latitude</b></label>
               <input type="number" step="0.01" placeholder="Entrer la latitude" name="lat" required>
               <label for="lon"><b>Longitude</b></label>
@@ -52,16 +51,50 @@
           </fieldset>
           <div class="chechbox">
             <input  type="checkbox" name="accept" style="margin-bottom:15px" required>    
-            <p class="checkbox">En créeant une question vous donnez vos droits d'auteur sur celle-ci à <b>GeoChercheur</b>.</p>
+            <p class="checkbox">En créeant une question vous donnez vos droits d'auteurs sur celle-ci à <b>GeoChercheur</b>.</p>
           </div>
           <div class="clearfix" style="text-align: center; padding: 1em;">
-            <button type="button" class="cancelbtn">Abandonner</button>
+            <button type="button" class="cancelbtn" onclick="btn1()">Abandonner</button>
             <button type="submit" class="validbtn">Valider</button>
           </div>
         </div>
       </form>
     </div>
-    
+
+
+    <div id="form2" class="modal">
+      <span onclick="btn2()" class="close" title="Close Modal">&times;</span>      
+      <form class="modal-content" method="post" action="PHP/ajout_Parcours.php" enctype="multipart/form-data">
+        <div class="conteneur">
+          <h1 style="text-align: center; padding-top: 1em;">Ajout d'un nouveau parcours </h1>
+          <p>Remplissez ce formulaire : Les <b>caracteristiques</b> et une <b>image</b> du parcours sont obligatoire</p>
+          <hr>
+          <fieldset>
+            <legend>Image représentatif du parcours</legend>
+            <input type="hidden" name="MAX_FILE_SIZE" value="200000">
+            <label for="file" class="label-file">Choisir une image du parcours</label>
+            <input type="file" id="icon"  name="src" accept=".jpg, .png, .jpeg">
+          </fieldset>
+          <fieldset>
+            <legend>Les caracteristiques</legend>
+              <input type="hidden" name="id" required>
+              <label for="nom"><b>Nom</b></label>
+              <input type="text"  placeholder="Saisissez le nom" name="nom" required>
+              <label for="desc"><b>Description</b></label>
+              <textarea placeholder="Ecrire la description..." name="desc"  style="height:200px" required></textarea>
+          </fieldset>
+          <div class="chechbox">
+            <input  type="checkbox" name="accept" style="margin-bottom:15px" required>    
+            <p class="checkbox">En créeant un pacours vous donnez vos droits d'auteurs sur celui-ci à <b>GeoChercheur</b>.</p>
+          </div>
+          <div class="clearfix" style="text-align: center; padding: 1em;">
+            <button type="button" class="cancelbtn" onclick="btn2()">Abandonner</button>
+            <button type="submit" class="validbtn">Valider</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
   </main>
 </body>
 

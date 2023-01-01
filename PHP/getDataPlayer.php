@@ -3,6 +3,7 @@
     if($pseudo != "")
     {
         require("connectServer.php");
+        $array = array();
         try{
             $usersStatement = $mysqlClient->prepare('SELECT c.idClient, c.icon, SUM(scoreTotal) AS score FROM Scoretotal s INNER JOIN Client c ON s.idClient = c.idClient WHERE c.pseudo = ?');
             $usersStatement->bindParam(1,$pseudo);
@@ -12,25 +13,19 @@
                 $array = array(
                     "idClient" => $player[0]['idClient'],
                     "icon" => $player[0]['icon'],
-                    "score" => $player[0]['score'],
+                    "score" => $player[0]['score']
                 );
             }
             else{
-                try{
-                     $usersStatement = $mysqlClient->prepare('SELECT idClient, icon FROM Client WHERE pseudo = ?');
-                    $usersStatement->bindParam(1,$pseudo);
-                    $usersStatement->execute();
-                    $player = $usersStatement->fetchAll();
-                    $array = array(
-                        "idClient" => $player[0]['idClient'],
-                        "icon" => $player[0]['icon'],
-                        "score" =>  0,
-                    );
-                }
-                catch(Exception $exception){
-                    die('Erreur : '.$exception->getMessage());
-                    
-                }
+                $usersStatement = $mysqlClient->prepare('SELECT idClient, icon FROM Client WHERE pseudo = ?');
+                $usersStatement->bindParam(1,$pseudo);
+                $usersStatement->execute();
+                $player = $usersStatement->fetchAll();
+                $array = array(
+                    "idClient" => $player[0]['idClient'],
+                    "icon" => $player[0]['icon'],
+                    "score" =>  0
+                );
             }
             header('Content-Type: application/json;charset=utf-8');
             echo json_encode($array);
@@ -43,7 +38,7 @@
     }else{
         $array = array(
             "icon" => "assets/img/doggos/brown.jpg",
-            "score" => 0,
+            "score" => 0
         );
         header('Content-Type: application/json;charset=utf-8');
         echo json_encode($array);
