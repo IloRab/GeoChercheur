@@ -1,3 +1,7 @@
+--
+-- Database: `geomap`
+--
+
 DROP DATABASE IF EXISTS geomap;
 CREATE DATABASE geomap;
 USE geomap;
@@ -69,6 +73,10 @@ CREATE TABLE Compose(
    CONSTRAINT FK_Compose_Parcours FOREIGN KEY(idParcours) REFERENCES Parcours(idParcours) ON DELETE CASCADE
 );
 
+
+--
+-- Procedures
+--
 
 DROP PROCEDURE IF EXISTS addClient;
 DROP PROCEDURE IF EXISTS addParcours;
@@ -144,6 +152,36 @@ BEGIN
    SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1
    WHERE idClient = idClient_ and idParcours = idParcours_ ;
 END $
+
+--
+-- Triggers `client`
+--
+DELIMITER $$
+CREATE TRIGGER `AFTER_AddClient` AFTER INSERT ON `client` FOR EACH ROW INSERT INTO scoretotal(idClient,idParcours,scoretotal,nbParties) SELECT NEW.idClient, idParcours, 0, 0 FROM parcours
+$$
+DELIMITER ;
+
+--
+-- Triggers `historique`
+--
+DELIMITER $$
+CREATE TRIGGER `AFTER_Sauvegarde` AFTER INSERT ON `historique` FOR EACH ROW UPDATE scoretotal
+SET scoretotal = scoretotal + NEW.score
+WHERE idClient = NEW.idClient AND idParcours = NEW.idParcours
+$$
+DELIMITER ;
+
+
+--
+-- Triggers `parcours`
+--
+DELIMITER $$
+CREATE TRIGGER `AFTER_AddParcours` AFTER INSERT ON `parcours` FOR EACH ROW INSERT INTO scoretotal SELECT idClient, NEW.idParcours, 0, 0 FROM client
+$$
+DELIMITER ;
+
+
+
 
 /*CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
 CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");
