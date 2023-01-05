@@ -73,7 +73,6 @@ function ligne_rang(rank_data) {
 function add_parcours(data){
   const card = document.createElement("div");
   card.className = "container";
-  card.setAttribute("id", data.id_parcour);
   card.style.backgroundImage = "url("+ data.thumbnail +")";
   append_new(card, "div",{
     className: "bg-text",
@@ -89,6 +88,7 @@ function add_parcours(data){
   append_new(text, "button",{
     className: "button focus-grow",
     textContent: "Ajouter",
+    id: data.id_parcour
   });
 
   middel.append(text);

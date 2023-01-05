@@ -1,15 +1,12 @@
-var modal;
 
 window.addEventListener("load", init);
 
 function init(){
-    modal = document.getElementById('form');
     var btns = document.getElementsByClassName('button focus-grow');
-    for(i = 0; i < btns.length; i++){
-        btns[i].addEventListener("click",open_form);
-    }
+        
+    btns.onclick = open_form();
     console.log(btns);
-    img = document.getElementById("icon");
+    var img = document.getElementById("icon");
 
     img.addEventListener("change",function(){
         document.getElementById("label-file").textContent = "Image choisie : " + this.files[0].name;
@@ -50,6 +47,18 @@ function close(){
     }
 }
 
+function open_form(){
+    close();
+    document.getElementById('form').style.display = "block";
+    var el = document.getElementById("idP");
+    var num = this.id;
+    console.log(num);
+    el.setAttribute("value", num);
+    
+}
+
+
+
 function open(){
     var bgs = document.getElementsByClassName("bg-text");
     for(i = 0; i < bgs.length; i++){
@@ -57,15 +66,6 @@ function open(){
     }
 }
 
-function open_form(){
-    modal.style.display = "flex";
-    let el = document.getElementById("idP");
-    let p = this.parentElement.parentElement;
-    let id = p.parentElement;
-    let num = id.getAttribute("id");
-    el.setAttribute("value", num);
-    close();
-}
 
 function btn1(){
     document.getElementById('form').style.display ='none'; 

@@ -1,27 +1,24 @@
 <?php
-$idP = isset($_POST('id'))? $_POST('id') : "";
-$lon = isset($_POST('lon')) ? $_POST('lon') : "";
-$lat = isset($_POST('lat')) ? $_POST('lien') : "";
-$src = isset($_FILES('src')) ?  $_FILES('src') : "";
-
+$idP = isset($_POST['id'])? $_POST['id'] : "";
+$lon = isset($_POST['lon']) ? $_POST['lon'] : "";
+$lat = isset($_POST['lat']) ? $_POST['lat'] : "";
 $idClient =  isset($_COOKIE['idClient']) ? $_COOKIE['idClient'] : "";
 
-if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
+if($lon != "" && $lat != "" && $idP!= "" && $idClient!= ""){
     require("connectServer.php");
     try{
-        $sql = $mysqlClient->prepare('CALL addQuestion(?,?,?,?)');
+        $sql = $mysqlClient->prepare('CALL addQuestion(?,?,?)');
         $sql->bindParam(1,$lat);
         $sql->bindParam(2,$lon);
-        $sql->bindParam(3,$src);
-        $sql->bindParam(4,$idClient);
-        $sql->excute();
+        $sql->bindParam(3,$idClient);
+        $sql->execute();
 
-        $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Client');
+        $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Question');
         $sql->execute();
         $idQuest = $sql->fetchAll();
 
-        $sql = $mysqlClient->prepare('CALL addQuestionsAParcours(?,?)');
-        $sql->bindParam(1,$idQuest);
+        $sql = $mysqlClient->prepare('CALL addComposition(?,?)');
+        $sql->bindParam(1,$idQuest[0]);
         $sql->bindParam(2,$idP);
         $sql->execute();
         

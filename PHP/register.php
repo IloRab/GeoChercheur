@@ -35,7 +35,7 @@ if($pseudo != "" && $password != ""){
         * Cookie qui expire dans un an
             */
             setcookie("LOGGED_USER", $pseudo);
-            setcookie("idClient", $idClient[0]);
+            setcookie("idClient", $idClient[0]['idClient']);
         header("Location: ../jouer.html");
     }catch(Exception $exception){
         die('Erreur : '.$exception->getMessage());

@@ -8,7 +8,7 @@ if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
     require("connectServer.php");
     try{
         $sql = $mysqlClient->prepare('CALL addParcours(?,?,?,?)');
-        $sql->bindParam(1,$nom)
+        $sql->bindParam(1,$nom);
         $sql->bindParam(2,$idClient);
         $sql->bindParam(3,$desc);
 
@@ -25,7 +25,7 @@ if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
             $sql->bindParam(4,$src);
         }
 
-        $sql->excute();    
+        $sql->execute();    
           
         echo "<script> alert('Le parcours a bien été ajouté'); </script>";
         header("Location: ../creer.html");
