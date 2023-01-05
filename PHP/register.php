@@ -26,18 +26,16 @@ if($pseudo != "" && $password != ""){
         else
             $sql->bindParam(3,$icon);
         $sql->execute();
-        $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Client');
+
+        $sql = $mysqlClient->prepare('SELECT idClient FROM Client WHERE pseudo = ?');
+        $sql->bindParam(1,$pseudo);
         $sql->execute();
         $idClient = $sql->fetchAll();
         /**
         * Cookie qui expire dans un an
             */
-            setcookie(
-                "LOGGED_USER", 
-                $pseudo);
-            setcookie(
-                "dClient", 
-                $idClient[0]);
+            setcookie("LOGGED_USER", $pseudo);
+            setcookie("idClient", $idClient[0]);
         header("Location: ../jouer.html");
     }catch(Exception $exception){
         die('Erreur : '.$exception->getMessage());

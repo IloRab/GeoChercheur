@@ -1,6 +1,7 @@
 
-CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
 
+CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
+CALL addClient('cyril', 'lignac2022','assets/img/icons/cyril.jpg');
 ALTER TABLE parcours AUTO_INCREMENT = 1;
 CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");
 CALL addQuestion(48.843070851028, 2.2692497022078,NULL); 

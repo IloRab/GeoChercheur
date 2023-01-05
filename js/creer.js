@@ -4,17 +4,15 @@ window.addEventListener("load", init);
 
 function init(){
     modal = document.getElementById('form');
-
-    var btns = document.getElementsByClassName('focus-grow');
+    var btns = document.getElementsByClassName('button focus-grow');
     for(i = 0; i < btns.length; i++){
         btns[i].addEventListener("click",open_form);
-        console.log(btns[i].getAttribute("onclick"));
     }
-
+    console.log(btns);
     img = document.getElementById("icon");
 
     img.addEventListener("change",function(){
-        document.getElementsByClassName("label-file")[1].textContent("Image choisie : " + this.files[0].name);
+        document.getElementById("label-file").textContent = "Image choisie : " + this.files[0].name;
         // e.files contient un objet FileList
         const picture = this.files[0];
 
@@ -31,7 +29,7 @@ function init(){
                 // L'événement déclenché lorsque la lecture est complète
                 reader.onload = function (e) {
                     // On change l'URL de l'image (base64)
-                    image.attr("src", e.target.result);
+                    document.getElementById("image").setAttribute("src", e.target.result);
                 }
 
                 // On lit le fichier "picture" uploadé
@@ -41,7 +39,7 @@ function init(){
             }
         }
     });
-    document.getElementsByClassName("label-file")[0].click(function(){img.click();});
+    document.getElementById("label-file").addEventListener("click",function(){img.click();});
 
 }
 

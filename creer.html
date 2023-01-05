@@ -30,7 +30,7 @@
     
     <div id="form" class="modal">
       <span onclick="btn1()" class="close" title="Close Modal">&times;</span>      
-      <form class="modal-content" method="post" action="PHP/ajout_question.php" enctype="multipart/form-data">
+      <form class="modal-content" method="post" action="PHP/ajout_question.php">
         <div class="conteneur">
           <h1 style="text-align: center; padding-top: 1em;">Ajout d'une question au parcours  </h1>
           <p>Remplissez ce formulaire : Les <b>coordonnees</b> et une <b>image</b> du lieu sont obligatoire</p>
@@ -65,8 +65,9 @@
           <hr>
           <fieldset>
             <legend>Image représentatif du parcours</legend>
+            <img src="assets/img/tmp-logo.png" alt="icon" id="image" class="center" >
             <input type="hidden" name="MAX_FILE_SIZE" value="200000">
-            <label for="file" class="label-file">Choisir une image du parcours</label>
+            <label for="file" id="label-file">Choisir une image du parcours</label>
             <input type="file" id="icon"  name="src" accept=".jpg, .png, .jpeg">
           </fieldset>
           <fieldset>

@@ -15,12 +15,9 @@ if ($pseudo  != "" && $password != "") {
             /**
         * Cookie qui expire dans un an
             */
-            setcookie(
-                "LOGGED_USER", 
-                $pseudo);
-            setcookie(
-                "idClient", 
-                $client['idClient']);
+            setcookie("LOGGED_USER", $pseudo);
+            setcookie("idClient", $client[0]['idClient']);
+                
             header("Location: ../jouer.html");
         }
         else{
