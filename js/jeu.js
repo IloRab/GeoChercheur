@@ -29,9 +29,7 @@ function get_question_actuel(){
     let questions = JSON.parse(Cookies.get('question'))
     let idquestionactuel = Cookies.get('question_actuelle')
     let question = questions[idquestionactuel]
-    
     return question
-
 }
 
 function leaflet(coord) {
@@ -76,12 +74,19 @@ function mapilary(bboxalea){
   }
 
 function poser(e){
-  var coord = map.mouseEventToLatLng(e);
-  var lat = coord.lat;
-  var lng = coord.lng;
+  let coord = map.mouseEventToLatLng(e);
+  let lat = coord.lat;
+  let lng = coord.lng;
   if (propositionj) 
     map.removeLayer(propositionj);
   propositionj = L.marker([lat,lng]).addTo(map);
+}
+
+function calculerScore(coord,coordonne_rep){
+  let distance = coord.distanceTo(coordonne_rep)
+  let scoremax = 5000
+  let score = scoremax/(distance + 0.1)
+  return parseInt(score*1000,10)
 }
 
 function valider(){
@@ -89,7 +94,13 @@ function valider(){
   ligne = L.polyline([reponse._latlng,propositionj._latlng], {color:'red'}).addTo(map);
   document.getElementById("minimap").removeEventListener("click",poser) 
   let idquestionactuel = Number(Cookies.get('question_actuelle'))
-  console.log(idquestionactuel)
+  
   Cookies.set('question_actuelle',idquestionactuel+1)
-  location.reload()
+  Cookies.set('ScoreTotal',Number(Cookies.get('ScoreTotal'))+calculerScore(reponse._latlng,propositionj._latlng))
+  if(idquestionactuel+1<Number(Cookies.get('taille'))){
+    setTimeout(setTimeout(function(){ location.reload(); }, 5000))
+    alert("Position validée. Question suivante dans 5 secondes !")
+  }
+  console.log(Cookies.get("ScoreTotal"))
+  location.href="findepartie.html"
 }

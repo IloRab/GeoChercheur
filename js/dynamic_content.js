@@ -181,6 +181,7 @@ function play(){
     Cookies.set('question', JSON.stringify(json))
     Cookies.set('question_actuelle',0)
     Cookies.set('taille',json.length)
+    Cookies.set('ScoreTotal',0)
     window.location.href = "jeu.html";
     
     }
