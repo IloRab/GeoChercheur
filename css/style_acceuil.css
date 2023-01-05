@@ -59,6 +59,18 @@ body{
 
 }
 
+.flex-col-vert-center {
+  justify-content: center;
+}
+
+.fin-partie a {
+  color: white;
+}
+
+.fin-partie a:hover {
+  color: yellow;
+}
+
 /*Le CSS du carroussel*/
 
 .slider-container {
