@@ -6,12 +6,12 @@ DROP DATABASE IF EXISTS geomap;
 CREATE DATABASE geomap;
 USE geomap;
 
-DROP TABLE IF EXISTS Client;
-DROP TABLE IF EXISTS Question;
-DROP TABLE IF EXISTS Parcours;
-DROP TABLE IF EXISTS historique;
-DROP TABLE IF EXISTS ScoreTotal;
-DROP TABLE IF EXISTS Compose;
+DROP TABLE IF EXISTS Client CASCADE;
+DROP TABLE IF EXISTS Question CASCADE;
+DROP TABLE IF EXISTS Parcours CASCADE;
+DROP TABLE IF EXISTS historique CASCADE;
+DROP TABLE IF EXISTS ScoreTotal CASCADE;
+DROP TABLE IF EXISTS Compose CASCADE;
 
 
 CREATE TABLE Client(
@@ -27,10 +27,10 @@ CREATE TABLE Question(
    idQuestion INT AUTO_INCREMENT,
    latitude DOUBLE NOT NULL,
    longitude DOUBLE NOT NULL,
-   
    idClient INT,
    CONSTRAINT PK_Question PRIMARY KEY(idQuestion),
-   CONSTRAINT FK_Question_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE
+   CONSTRAINT FK_Question_Client FOREIGN KEY(idClient) REFERENCES Client(idClient) ON DELETE CASCADE,
+   CONSTRAINT U_Latitude_Longitude UNIQUE(latitude, longitude)
 );
 
 CREATE TABLE Parcours(
@@ -118,12 +118,6 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE addQuestionsAParcours(idQuest INT, idNewParc INT)
-BEGIN
-	INSERT INTO compose (idQuestion, idParcours) VALUES (idQuest, idNewParc);
-END $
-
-DELIMITER $
 CREATE FUNCTION  getMeilleurScore(idClient_ INT, idParcours_ INT) 
 RETURNS INT 
 BEGIN
@@ -180,15 +174,5 @@ CREATE TRIGGER `AFTER_AddParcours` AFTER INSERT ON `parcours` FOR EACH ROW INSER
 $$
 DELIMITER ;
 
-
-
-
-/*CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
-CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");
-CALL addQuestion(48.843070851028, 2.2692497022078,"", 1); 
-CALL addQuestion(48.86703313019228,2.3161158528885153,"",1);
-CALL addQuestion(48.843070851028, 2.2692497022078,1); CALLaddQuestion(48.86703313019228,2.3161158528885153,1);
-CALL addComposition(1,1); 
-CALL addComposition(2,1);*/
 
 

@@ -4,14 +4,7 @@ $lon = isset($_POST('lon')) ? $_POST('lon') : "";
 $lat = isset($_POST('lat')) ? $_POST('lien') : "";
 $src = isset($_FILES('src')) ?  $_FILES('src') : "";
 
-// chemin d'accès à votre fichier JSON
-$file = 'getDataPlayer.php'; 
-// mettre le contenu du fichier dans une variable
-$data = file_get_contents($file); 
-// décoder le flux JSON
-$obj = json_decode($data); 
-// accéder à l'élément approprié
-$idClient =  isset($obj[0]->idClient)? $obj[0]->idClient : "";
+$idClient =  isset($_COOKIE['idClient']) ? $_COOKIE['idClient'] : "";
 
 if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
     require("connectServer.php");

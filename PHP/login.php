@@ -18,6 +18,9 @@ if ($pseudo  != "" && $password != "") {
             setcookie(
                 "LOGGED_USER", 
                 $pseudo);
+            setcookie(
+                "idClient", 
+                $client['idClient']);
             header("Location: ../jouer.html");
         }
         else{

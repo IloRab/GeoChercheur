@@ -10,46 +10,8 @@ function init(){
         btns[i].addEventListener("click",open_form);
         console.log(btns[i].getAttribute("onclick"));
     }
-   
-    
-
-    icon = document.getElementById("img");
-    icon.style.display = "none";
 
     img = document.getElementById("icon");
-
-
-    icon.addEventListener("change",function(){
-        document.getElementsByClassName("label-file")[0].textContent("Image choisie : " + this.files[0].name);
-        // e.files contient un objet FileList
-        const picture = this.files[0];
-
-        // "picture" est un objet File
-        if (picture) {
-            // Les types de fichier autorisés
-            var types = [ "image/jpg", "image/jpeg", "image/png" ];
-            
-            // Vérification si "picture.type" se trouve dans "types"
-            if (types.includes(picture.type)) {
-                // L'objet FileReader
-                var reader = new FileReader();
-
-                // L'événement déclenché lorsque la lecture est complète
-                reader.onload = function (e) {
-                    // On change l'URL de l'image (base64)
-                    image.attr("src", e.target.result);
-                }
-
-                // On lit le fichier "picture" uploadé
-                reader.readAsDataURL(picture);
-
-                
-            }
-        }
-    });
-    document.getElementsByClassName("label-file")[0].click(function(){icon.click();});
-
-
 
     img.addEventListener("change",function(){
         document.getElementsByClassName("label-file")[1].textContent("Image choisie : " + this.files[0].name);
@@ -79,7 +41,7 @@ function init(){
             }
         }
     });
-    document.getElementsByClassName("label-file")[1].click(function(){img.click();});
+    document.getElementsByClassName("label-file")[0].click(function(){img.click();});
 
 }
 

@@ -26,7 +26,6 @@ if($pseudo != "" && $password != ""){
         else
             $sql->bindParam(3,$icon);
         $sql->execute();
-        $token = "";
         $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Client');
         $sql->execute();
         $idClient = $sql->fetchAll();
@@ -36,6 +35,9 @@ if($pseudo != "" && $password != ""){
             setcookie(
                 "LOGGED_USER", 
                 $pseudo);
+            setcookie(
+                "dClient", 
+                $idClient[0]);
         header("Location: ../jouer.html");
     }catch(Exception $exception){
         die('Erreur : '.$exception->getMessage());
