@@ -182,6 +182,7 @@ function play(){
     Cookies.set('question_actuelle',0)
     Cookies.set('taille',json.length)
     Cookies.set('ScoreTotal',0)
+    Cookies.set('idP',this.getAttribute("data-id-parcours"))
     window.location.href = "jeu.html";
     
     }

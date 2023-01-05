@@ -6,4 +6,5 @@ function init(){
   let affichage = document.getElementById("score")
   console.log(affichage)
   affichage.innerHTML = score
+  fetch("PHP/ajout_score.php?idP="+Cookies.get("idP")+"&score="+score)
 }
