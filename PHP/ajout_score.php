@@ -8,10 +8,10 @@ if($idP != "" && $idClient != "" && $score != ""){
     require("connectServer.php");
     try{
         $sql = $mysqlClient->prepare('CALL sauvegarde(?, ?, ?)');
-        $sql->bindParam(1,$idClient)
+        $sql->bindParam(1,$idClient);
         $sql->bindParam(2,$idP);
         $sql->bindParam(3,$score);
-        $sql->excute();    
+        $sql->execute();    
           
         echo "<script> alert('Le score a bien été ajouté'); </script>";
     }catch(Exception $exception){
