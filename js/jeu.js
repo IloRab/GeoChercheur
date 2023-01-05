@@ -33,8 +33,8 @@ function get_question_actuel(){
 }
 
 function leaflet(coord) {
-    //let coord_iut = [48.84197804895268,2.267719848410252];
     map = L.map('minimap').setView(coord, 13);
+    setInterval(function(){ map.invalidateSize()}, 500);
     let layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxBoundsViscosity: 1.0,
       noWrap: true,  
@@ -101,6 +101,8 @@ function valider(){
     setTimeout(setTimeout(function(){ location.reload(); }, 5000))
     alert("Position validée. Question suivante dans 5 secondes !")
   }
-  console.log(Cookies.get("ScoreTotal"))
+  else
+  {
   location.href="findepartie.html"
+  }
 }
