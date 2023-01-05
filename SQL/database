@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS ScoreTotal CASCADE;
 DROP TABLE IF EXISTS Compose CASCADE;
 
 
+
 CREATE TABLE Client(
    idClient INT AUTO_INCREMENT,
    icon VARCHAR(100) NOT NULL,
@@ -109,10 +110,7 @@ END $
 DELIMITER $
 CREATE PROCEDURE addParcours(nom VARCHAR(50), idCreateur INT, descriptionParcours TEXT, imageP VARCHAR(100))
 BEGIN
-   DECLARE idParcours_ INT;
 	INSERT INTO Parcours (idParcours, nomParcours, idClient,descriptionParcours,imageP) VALUES (NULL, nom, idCreateur, descriptionParcours,imageP);
-   SET idParcours_ = (SELECT LAST_INSERT_ID() FROM Parcours);
-   INSERT INTO ScoreTotal(idClient, idParcours, scoreTotal, nbParties ) SELECT idClient, idParcours_,0,0 FROM Client;
 END $
 
 

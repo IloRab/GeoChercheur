@@ -1,27 +1,29 @@
 
 CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
+
+ALTER TABLE parcours AUTO_INCREMENT = 1;
 CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");
 CALL addQuestion(48.843070851028, 2.2692497022078,NULL); 
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
 CALL addQuestion(48.86703313019228,2.3161158528885153,1);
 
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
+CALL addComposition(1,1); 
+CALL addComposition(2,1); 
 
 
-CALL addParcours("Monuments de Paris", 1, "3 des plus beaux monuments de Paris", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1200px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg");
+ALTER TABLE parcours AUTO_INCREMENT = 2;
+CALL addParcours("Monuments de Paris", 1, "3 des plus beaux monuments de Paris", "assets/img/doggos/france.png");
 CALL addQuestion(48.85733152620841, 2.292700000003265, 1); /* tour Eiffel */
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
 CALL addQuestion(48.873702, 2.295143, 1); /* arc de Triomphe */
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
 CALL addQuestion(48.846582183611, 2.3444420377778, 1); /* Panthéon */
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
- 
+CALL addComposition(3,2); 
+CALL addComposition(4,2); 
+CALL addComposition(5,2);
 
-
-CALL addParcours("Campus UPC", 1, "3 des plus beaux campus UPC", "https://u-paris.fr/wp-content/uploads/2022/03/SiegeUP_1920-1.jpg");
+ALTER TABLE parcours AUTO_INCREMENT = 3;
+CALL addParcours("Campus UPC", 1, "3 des plus beaux campus UPC", "assets/img/doggos/parisCite.jepg");
 CALL addQuestion(48.8414568, 2.2665519, 1); /* IUT Paris Rives de Seine */
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
 CALL addQuestion(48.852004, 2.340376, 1); /* UPC Odéon */
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
 CALL addQuestion(48.85567, 2.3312790999985, 1); /* UPC site Saint-Germain-des-Prés */
-SELECT addComposition(LAST_INSERT_ID(), (SELECT LAST_INSERT_ID() FROM Question) FROM Parcours;
+CALL addComposition(6,3); 
+CALL addComposition(7,3);
+CALL addComposition(8,3); 
