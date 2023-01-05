@@ -101,6 +101,8 @@ function valider(){
     setTimeout(setTimeout(function(){ location.reload(); }, 5000))
     alert("Position validée. Question suivante dans 5 secondes !")
   }
-  console.log(Cookies.get("ScoreTotal"))
+  else
+  {
   location.href="findepartie.html"
+  }
 }

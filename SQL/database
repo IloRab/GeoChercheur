@@ -147,9 +147,8 @@ END $
 
 /*CALL addClient("Bob_admin", "azertyuiop", "assets/img/doggos/pug.jpg");
 CALL addParcours("Test0", 1 , "Un parcours test", "assets/img/doggos/mad.jpg");
-CALL addQuestion(48.843070851028, 2.2692497022078,"", 1); 
-CALL addQuestion(48.86703313019228,2.3161158528885153,"",1);
-CALL addQuestion(48.843070851028, 2.2692497022078,1); CALLaddQuestion(48.86703313019228,2.3161158528885153,1);
+CALL addQuestion(48.843070851028, 2.2692497022078,1); 
+CALL addQuestion(48.86703313019228,2.3161158528885153,1);
 CALL addComposition(1,1); 
 CALL addComposition(2,1);*/
 
