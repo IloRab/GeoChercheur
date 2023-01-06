@@ -129,18 +129,6 @@ input[type=number]:focus,input[type=text]:focus, textarea:focus{
   background-color: #ddd;
   outline: none;
 }
-
-.checkbox {
-  display: flex;
-  
-}
-.checkbox input{
-  width: 19px;
-}
-.checkbox p{
-  padding: 1em;
-}
-
 /* Set a style for all buttons */
 form button {
   background-color: #04AA6D;

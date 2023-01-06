@@ -4,7 +4,7 @@ $nom = isset($_POST['nom']) ? $_POST['nom'] : "";
 $src = isset($_FILES['src']) ?  $_FILES['src'] : "";
 $idClient =  isset($_COOKIE['idClient']) ? $_COOKIE['idClient'] : "";
 
-if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
+if($desc != "" && $nom != "" &&  $idClient!= ""){
     require("connectServer.php");
     try{
         $sql = $mysqlClient->prepare('CALL addParcours(?,?,?,?)');
@@ -16,12 +16,12 @@ if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
         $fichier = basename($src['name']);
         if(move_uploaded_file($src['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         {
-            $src = $dossier . $fichier;
+            $src = "assets/img/parcours/" . $fichier;
             $sql->bindParam(4,$src);
         }
         else //Sinon (la fonction renvoie FALSE).
         {
-            $src = "../assets/img/tmp-logo.png";
+            $src = "assets/img/tmp-logo.png";
             $sql->bindParam(4,$src);
         }
 
@@ -36,6 +36,6 @@ if($lon != "" && $lat != "" && $src!= "" && $idClient!= ""){
 }
 else{
     echo "<script> alert('Les informations donnée ne sont pas correcte'); </script>";
-    header("Location: ../creer.html");}
+}
 
 ?>

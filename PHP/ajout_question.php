@@ -13,12 +13,14 @@ if($lon != "" && $lat != "" && $idP!= "" && $idClient!= ""){
         $sql->bindParam(3,$idClient);
         $sql->execute();
 
-        $sql = $mysqlClient->prepare('SELECT LAST_INSERT_ID() FROM Question');
+        $sql = $mysqlClient->prepare('SELECT idQuestion FROM Question WHERE latitude = ? and longitude =?');
+        $sql->bindParam(1,$lat);
+        $sql->bindParam(2,$lon);
         $sql->execute();
         $idQuest = $sql->fetchAll();
 
         $sql = $mysqlClient->prepare('CALL addComposition(?,?)');
-        $sql->bindParam(1,$idQuest[0]);
+        $sql->bindParam(1,$idQuest[0]['idQuestion']);
         $sql->bindParam(2,$idP);
         $sql->execute();
         

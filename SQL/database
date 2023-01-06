@@ -140,9 +140,6 @@ DELIMITER $
 CREATE PROCEDURE sauvegarde(idClient_ INT, idParcours_ INT, score_ INT)
 BEGIN
    INSERT INTO historique(idHistorique, idClient, idParcours, score, dateH) VALUES (NULL, idClient_,idParcours_,score_, CURDATE());
-   UPDATE ScoreTotal 
-   SET scoreTotal = scoreTotal + score_, nbParties = nbParties + 1
-   WHERE idClient = idClient_ and idParcours = idParcours_ ;
 END $
 
 --

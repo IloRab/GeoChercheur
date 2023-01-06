@@ -2,10 +2,7 @@
 window.addEventListener("load", init);
 
 function init(){
-    var btns = document.getElementsByClassName('button focus-grow');
-        
-    btns.onclick = open_form();
-    console.log(btns);
+    
     var img = document.getElementById("icon");
 
     img.addEventListener("change",function(){
@@ -42,7 +39,7 @@ function init(){
 
 function close(){
     var bgs = document.getElementsByClassName("bg-text");
-    for(i = 0; i < bgs.length; i++){
+    for(var i = 0; i < bgs.length; i++){
         bgs[i].style.display = "none";
     }
 }
@@ -61,7 +58,7 @@ function open_form(){
 
 function open(){
     var bgs = document.getElementsByClassName("bg-text");
-    for(i = 0; i < bgs.length; i++){
+    for(var i = 0; i < bgs.length; i++){
         bgs[i].style.display = "flex";
     }
 }
