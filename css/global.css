@@ -56,6 +56,7 @@ hr {
   --button-bg-color: green;
   --button-fg-color: white;
   --button-fontsize: inherit;
+  cursor: pointer;
 
   text-decoration: none;
   border: 2px solid var(--button-fg-color);
@@ -91,4 +92,22 @@ hr {
 
 .flex-col-vert-center {
   justify-content: center;
+}
+
+.deco{
+  padding: 15px 25px;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 9px #999;
+  right: 0; 
+  bottom: 11px; 
+  position: fixed;
+}
+
+.deco:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

@@ -13,6 +13,8 @@
   <script src="js/navbar.js"></script>
   <script src="js/dynamic_content.js"></script>
   <script src="js/creer.js"></script>
+  <script src="js/deconnexion.js"></script>
+
 </head>
 
 <body>
@@ -30,7 +32,8 @@
     <div style="text-align: center; padding-bottom: 4em;"> <button onclick="btn3()" class="button">Nouveau</button></div>
     
   </main>
-    
+  <button class="button deco" onclick="logOut()">Deconnexion</button>
+
     <div id="form" class="modal">
       <span onclick="btn1()" class="close" title="Close Modal">&times;</span>      
       <form class="modal-content" method="post" action="PHP/ajout_question.php">
