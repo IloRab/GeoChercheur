@@ -85,8 +85,8 @@ function poser(e){
 function calculerScore(coord,coordonne_rep){
   let distance = coord.distanceTo(coordonne_rep)
   let scoremax = 5000
-  let score = scoremax/(distance + 0.1)
-  return parseInt(score*1000,10)
+  let score = scoremax/(distance + 1)
+  return parseInt(score*10)
 }
 
 function valider(){

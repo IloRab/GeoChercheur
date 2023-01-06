@@ -4,6 +4,6 @@ unset($_COOKIE["idClient"]);
 
 header("Location: ../index.html");
 
-exit();
+exit;
 
 ?>
