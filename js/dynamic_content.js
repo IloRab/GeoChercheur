@@ -86,13 +86,16 @@ function add_parcours(data){
   text.className = "text";
 
   append_new(text, "button",{
-    className: "button focus-grow",
+    className: "button focus-grow addbtn",
     textContent: "Ajouter",
     id: data.id_parcour
   });
 
   middel.append(text);
   card.append(middel);
+
+  var btn = card.querySelector(".addbtn")
+  btn.onclick = open_form;
   return card;
 
 }
