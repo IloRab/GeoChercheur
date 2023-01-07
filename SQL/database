@@ -120,7 +120,7 @@ CREATE FUNCTION  getMeilleurScore(idClient_ INT, idParcours_ INT)
 RETURNS INT 
 BEGIN
    DECLARE  score INT;
-   SET score = (SELECT MAX(score)  FROM historique 
+   SET score = (SELECT IFNULL(MAX(score),0)  FROM historique 
    WHERE idClient = idClient_ and idParcours = idParcours_);
    RETURN score;
 END $
@@ -130,7 +130,7 @@ CREATE FUNCTION  getScoreMoyen(idClient_ INT, idParcours_ INT)
 RETURNS INT 
 BEGIN
    DECLARE  score INT;
-   SET score = (SELECT AVG(score) FROM historique 
+   SET score = (SELECT IFNULL(AVG(score),0) FROM historique 
    WHERE idClient = idClient_ and idParcours = idParcours_);
    RETURN score;
 END $

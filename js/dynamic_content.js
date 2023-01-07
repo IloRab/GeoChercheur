@@ -66,7 +66,6 @@ function ligne_rang(rank_data) {
       textContent: rank_data.score
     }
   )
-
   return rank
 }
 

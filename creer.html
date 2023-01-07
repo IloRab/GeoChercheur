@@ -46,8 +46,14 @@
               <input type="hidden" id="idP" name="id" value="">
               <label for="lat"><b>Latitude</b></label>
               <input type="number" step="0.01" placeholder="Entrer la latitude" name="lat" required>
+              <fieldset id="messagelat">
+                <p id="lat" class="novalid">Latitude <b>invalide</b></p>
+              </fieldset>
               <label for="lon"><b>Longitude</b></label>
               <input type="number" step="0.01" placeholder="Entrer la longitude" name="lon" required>
+              <fieldset id="messagelon">
+                <p id="lon" class="novalid">Longitude <b>invalide</b></p>
+              </fieldset>
           </fieldset>
           <div class="chechbox" style="display: flex;align-items: baseline;padding: 1em;">
             <input  type="checkbox" name="accept" style="width: 19px;" required>    
@@ -55,7 +61,7 @@
           </div>
           <div class="clearfix" style="text-align: center; padding: 1em;">
             <button type="button" class="cancelbtn" onclick="btn1()">Abandonner</button>
-            <button type="submit" class="validbtn">Valider</button>
+            <button type="submit" class="validbtn" id="btn">Valider</button>
           </div>
         </div>
       </form>

@@ -59,3 +59,15 @@
 .classement-item-score::after {
   content: "pts";
 }
+
+.box {
+  width: 213px;
+  height: 34px;
+  border: 1px solid #999;
+  font-size: 18px;
+  background: var(--color1);
+  box-shadow: var(--shadow);  border-radius: 5px;
+  cursor: pointer;
+}
+
+option{ cursor: pointer;}

@@ -1,8 +1,61 @@
-
+var lat ;
+var lon ;
 window.addEventListener("load", init);
 
 function init(){
+    var myInput = document.getElementsByName("lat")[0];
+    var myInput2 = document.getElementsByName("lon")[0];
+    lat = document.getElementById("lat");
+    lon = document.getElementById("lon");
+
+    var btn = document.getElementById("btn");
+
+    btn.addEventListener("click",function(e){
+        if(!isLatitude(lat) && !isLongitude(lat)){
+            e.stopPropagation();
+            alert("La latitude et la longitude doivent être valide !");
+        }
+    })
+
+    myInput.addEventListener("focusin",function() {
+        document.getElementById("messagelat").style.display = "block";
+      });
     
+      myInput.addEventListener("focusout",function() {
+        document.getElementById("messagelat").style.display = "none";
+      });
+      
+      myInput2.addEventListener("focusin",function() {
+        document.getElementById("messagelon").style.display = "block";
+      });
+    
+      myInput2.addEventListener("focusout",function() {
+        document.getElementById("messagelon").style.display = "none";
+      });
+    
+      lat.addEventListener("input", function(){
+        if(isLatitude(lat.value)){
+            lat.classList.remove("novalid");
+            lat.classList.add("isvalid");
+            lat.innerHTML = "Latitude <b>valide</b>"
+        }else{
+            lat.classList.remove("isvalid");
+            lat.classList.add("novalid");
+            lat.innerHTML = "Latitude <b>invalide</b>"
+        }
+      })
+
+      lon.addEventListener("input", function(){
+        if(isLongitude(lon.value)){
+            lon.classList.remove("novalid");
+            lon.classList.add("isvalid");
+            lon.innerHTML = "Longitude <b>valide</b>"
+        }else{
+            lon.classList.remove("isvalid");
+            lon.classList.add("novalid");
+            lon.innerHTML = "Longitude <b>invalide</b>"
+        }
+      })
     var img = document.getElementById("icon");
 
     img.addEventListener("change",function(){
@@ -77,4 +130,14 @@ function btn2(){
 function btn3(){
     document.getElementById('form2').style.display ='block'; 
     close();
+}
+
+function isLatitude(lat) {
+    let pattern = new RegExp('^-?([1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}');
+    return pattern.test(lat);
+  }
+  
+function isLongitude(lng) {
+    let pattern = new RegExp('^-?([1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}');
+    return pattern.test(lng);
 }

@@ -223,6 +223,30 @@ hr {
   margin-right: auto;
   width: 50%;
 }
+#messagelat, #messagelon {
+  display:none;
+  padding: 0.1em;
+}
+
+#messagelat p, #messagelon p {
+  padding: 10px 35px;
+}
+
+.isvalid:before  {
+  position: relative;
+  left: -35px;
+  content: "✔";
+  color: green;
+}
+
+
+.novalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+  color: red;
+}
+
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {

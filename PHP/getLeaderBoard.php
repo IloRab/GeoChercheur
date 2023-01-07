@@ -17,8 +17,7 @@
         echo json_encode($array);
     }
     catch(Exception $exception){
-        header('Content-Type: application/json;charset=utf-8');
-        echo json_encode($array);        
+        die('Erreur : '.$exception->getMessage());      
     }
 
 ?>
