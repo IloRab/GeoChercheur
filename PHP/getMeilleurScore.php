@@ -4,7 +4,7 @@
         require("connectServer.php");
         $array = array();
         try{
-            $usersStatement = $mysqlClient->prepare('SELECT pseudo, getMeilleurScore(idClient, ?) AS score FROM Client ');
+            $usersStatement = $mysqlClient->prepare('CALL getMeilleurScore(?)');
             $usersStatement->bindParam(1,$id);
             $usersStatement->execute();
             $scores = $usersStatement->fetchAll();

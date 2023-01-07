@@ -83,8 +83,7 @@ DROP PROCEDURE IF EXISTS addClient;
 DROP PROCEDURE IF EXISTS addParcours;
 DROP PROCEDURE IF EXISTS addQuestion;
 DROP PROCEDURE IF EXISTS addQuestionsAParcours;
-DROP FUNCTION IF EXISTS getMeilleurScore;
-DROP FUNCTION IF EXISTS getScoreMoyen;
+DROP PROCEDURE IF EXISTS getMeilleurScore;
 DROP PROCEDURE IF EXISTS sauvegarde;
 DROP PROCEDURE IF EXISTS addComposition;
 
@@ -116,24 +115,12 @@ END $
 
 
 DELIMITER $
-CREATE FUNCTION  getMeilleurScore(idClient_ INT, idParcours_ INT) 
-RETURNS INT 
+CREATE PROCEDURE  getMeilleurScore(idParcours_ INT) 
 BEGIN
-   DECLARE  score INT;
-   SET score = (SELECT IFNULL(MAX(score),0)  FROM historique 
-   WHERE idClient = idClient_ and idParcours = idParcours_);
-   RETURN score;
+   SELECT c.pseudo, COALESCE(MAX(score),0) as score FROM historique h, client c 
+   WHERE h.idClient = c.idClient and h.idParcours = idParcours_;
 END $
 
-DELIMITER $
-CREATE FUNCTION  getScoreMoyen(idClient_ INT, idParcours_ INT) 
-RETURNS INT 
-BEGIN
-   DECLARE  score INT;
-   SET score = (SELECT IFNULL(AVG(score),0) FROM historique 
-   WHERE idClient = idClient_ and idParcours = idParcours_);
-   RETURN score;
-END $
 
 
 DELIMITER $
