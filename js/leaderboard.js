@@ -11,7 +11,7 @@ function derouler(){
    .then(json => {
       var select = document.getElementById("meilleurscore");
       append_new(select,"option",{
-        textContent: "Choissiez le parcours"
+        textContent: "Choisissez un parcours"
       })
       json.forEach(item => select.add(ajoutSelect(item)));
       console.log(select)
